@@ -1,0 +1,603 @@
+1.75
+Fixed crash when root drive for CLfiler's start directory is not detected.
+
+1.74
+Attempt to make workaround for Fat32fs detection (skip IDEFS and NVMeFS)
+
+1.73
+Fixed the "bad alloc" exception when started the second copy of CLFiler.
+
+1.72
+Fixed bug with "Reload" button. It sometimes not restored to original (unpressed) state.
+Rewrite drives detection, hope will run faster. Added detection the LanMan98 drives.
+
+1.71
+Changed bug in the initial window position/size on big resolutions.
+Prevent exception "Directory not empty".
+
+1.70
+Added iconv module.
+Fixed the tree view redraw after changing the drive.
+Optimize root drives detection.
+
+1.69
+Fixed display small icons for apps in the treeview if the app does not have a small sprite icon ("sm!" icon)
+
+1.68
+Fixed wrong "faded" "New directory" option for root drive in the tree view menu.
+Fixed main window position and size in low resolution display modes (800x600 and less)
+
+1.67
+Disable (grey out) the "Select all" menu item in the "search" or "timeline" mode.
+Exchange the "Folder" and "Name" columns in the CSV export, put "Folder" column first.
+Write Directory/Application size to the CSV export file.
+�The size is not calculated during export and should be calculated before.
+�To calculate directory sizes switch to "2D bars" or "Treemap" view mode and do the "Refresh" if necessary.
+
+1.66
+Fixed expand/collapse tree view directories.
+
+1.65
+2025-04-01
+Fixed open directories by double-click (was broken in 1.64)
+Use white background instead transparent by default when "save as" images in the internal viewer as ImageMagick incorrectly produced t
+Attempt to improve the directory content window. Do refresh fs items before redrawing instead of show cached content,
+ this should fix the problem with double redraws.
+
+1.64
+2024-03-31
+Fix bug in the thumbnails view mode when direcotry is empty and file is copied into it.
+Open images by internal image viewer by double click on select mouse button (was by click on adjust button).
+
+
+1.63
+2024-03-18
+Change colors for the treemap view.
+Implemented refresh directory after running the 0xffc (Util) filetype files.
+
+1.62
+2024-03-17
+Deselect file after double-click.
+Fix the directory refresh in the 2D Bars, Treemap view modes. It will refresh on 3 levels deep by default..
+ By pressing F11 (Refresh) it will refresh all subdirectories without a depth limit.
+Show "Refreshing: <dir>" on the status bar only in 2D Bars, Treemap view modes.
+
+1.61
+2024-03-15
+Implemented the second menu for the hovered and clicked directory item.
+ Now there are 2 menus, first is for the hovered and second for selected items.
+
+1.60
+2024-03-14
+Implemented option -no-search-drives. Completely disable the automatic scan for drives
+ and use drives from <CLFiler$ChoicesDir>.predefined-roots only. This will speed up the startup process.
+Change in the predefined-roots handling. Now all drives from <CLFiler$ChoicesDir>.predefined-roots added as is without checking if it really exists.
+ This is solve problems when many drives may added to iconbar in the startup and scanning process.
+
+1.59
+2024-03-11
+Fix Ctrl-M (open new window). It will open the current directory if nothing is selected.
+ Also in this mode the window will initially resize to contents (no big window).
+
+
+1.58
+2024-03-07
+Open a smaller new window by Ctrl-M hot key (open new window without toolbars). 
+Added menu item "Window (min)" in the "New" menu.
+
+1.57
+2024-03-05
+In the thumbnails mode don't change the displayed thumbnail cell size when a new image file copied or moved has larger dimensions.
+ Fit the image in the current cell size. Do recalculation and resize on next directory visit.
+
+1.56
+2024-02-06
+Implemented open new window without toolbars and treeview by Ctrl-M hot key.
+
+1.55
+2024-02-06
+Fixed problem with moving the main window out of screen in the Icons view modes.
+Fixed the sort ordering in "Folder / Name" sort order.
+
+1.54
+2024-01-30
+Fixed the sort by name (when '_' character is used), make it as in the native filer.
+Implemented stop the directory tree refresh (scan).
+ During the refreshing process the "refresh" button will change its icon to red square "stop" icon.
+ Click on this "stop" button will cancel the refresh and save already scanned folders cache.
+ Note, if you cancel the refreshing then folders size may be incorrect.
+ Pressing the F11 or "refresh" button in the "2D bars" or "Treemap" view mode will start a full refresh of the current directory again.
+
+1.53
+2024-01-29
+Implemented refresh and update for removable file systems when before show drives drop-down list.
+Changed window options to allow the window to move partially out of screen.
+Show destination dir in the Copy/Move confirmation dialog and show the full name of source in the window title.
+Reset top toolbar scroll position if main window dimensions are changed.
+In case short video files (less 2 seconds) the thumbnail may not be generated. Implemented a second attempt to make a thumbnail and take 1st frame.
+Show "Directory is empty" message in the "Treemap" mode if the current directory is empty instead of empty box.
+
+1.52
+2024-01-25
+Hope fixed the problem with double items in the treeview after copy/move. It happens when the same target directory already exists and content is merged.
+In the thumbnail mode do load the small sprite files (< 100k) immediately instead of loading at idle to get their dimensions for adaptive thumbnail cells resize.
+Scroll the top toolbar left and right if it does not fit in the window and mouse is near the left/right side.
+Fix error happens when renaming images with the same name but different cases (ex: "image" -> "IMage").
+Renamed viewmode "2d blocks" to "Treemap".
+Show icons in the "Treemap" mode if it fits in the block.
+If no files selected in the directory contents then Ctrl-C will copy currently selected directory (it will be selected directory in the treeview)
+
+1.51
+2024-01-22
+Fixed bug with wrong (default) app icons if apps displayed in the treeview.
+Updated TreeView module to 0.23
+Added following FS: ADFS4, ATAFS, HDFFS, MASSFS, ZIDEFS
+
+1.50
+2024-01-21
+Change colors of the "2d blocks" view mode.
+
+1.50
+2024-01-20
+Make thumbnails on idle instead in the redraw function. Queue source images and process (make thumbnails) on idle events.
+
+1.49
+2024-01-17
+Show full path of the scanned item in the status bar during the filesystem (re)scan.
+Periodically update content window in the Full info, 2D bars, 2d boxes modes during the filesystem (re)scan.
+
+1.48
+2024-01-17
+Change in the refresh directories. Full scan (refresh) will be performed in the view modes "2d bars" or "2d boxes" for the first time
+ for the current directory and all deeper subdirectories.
+ Full scan performed 1 time then results saved in the cache but need to wait when scan is done.
+ For performance reasons saving the cache performed after the scan so if it will be interrupted (CLFiler exit).
+ then next time it will start again.
+ Nonetheless it may take a lot of time to do the full scan of the root directory..
+ Currently the scan progress is only displayed in the bottom status bar, no scan progress window is displayed.
+ Scan performed at idle events so you can continue to work with CLFiler.
+Fixed some bugs with refresh directory cache and contents.
+Implemented the drag and drop (copy) from external apps to the Treeview nodes.
+
+
+1.46
+2024-01-11
+Fixed handling drag&drop files from external apps to treeview control.
+Fixed full info columns in the search mode, the full path column may be missed when previously was selected the "Full info" mode.
+Reworked the cache handling and saving. Now cache is saved in the separate file for every directory.
+ Cache saved into the <CLFiler$ChoicesDir>.cache directory.  Cache is saved asynchronously.
+
+1.45 
+2024-01-08 
+Show all file info in the bottom status bar.
+ Implemented FileInfo window (used ToolBox FileInfo dialog http://www.riscos.com/support/developers/toolbox/fileinfo.html). 
+ It is different than Filer’s FileInfo, the access rights field is missing and "Modified" field is not used.
+Reorder and readraw after rename the file.
+Rename the file's thumbnail when file is renamed (if file is image or video).
+Reorganized menu items, move Thumbnail mode slection to the View mode menu instead of the own separate menu.
+Fixed bug with delete an image file like ZIP. It was deleted from the file system but not removed from the treeview.
+
+1.43
+2023-07-04 Fixed drop items on the file, in this case items will be copied into the currently opened directory
+
+1.42
+Delete current selected directory by "delete" key if no any selected items present.
+Shift+Select click on the tree view node will only expand/collapse the node without selecting it the same as Adjust click.
+Implemented "Set file type auto" to recognize and set type for files ends to ",xxx" extension, then use "xxx" as filetype.
+
+1.41
+Fix the "sort" icon on the main toolbar.
+Fixed expand the tree view node when selected favorite directory.
+
+1.40
+Added Ctrl-I shortcut for "view image" function.
+Change predefined-roots handling. Now should handle root paths like :IXFS:$
+Fixed bug with error when close Image Viewer when CLFiler main window was closed already.
+Added F1 hotkey for Help.
+Attempt to fix a bug with double redraw.
+
+1.39
+Turn off Alignment Exceptions before running ffmpeg to get video thumbnails, this should fix possible Alignment Exception errors.
+Fix claiming input focus by clicking on the status bar.
+
+1.38
+Fix non-ASCII characters display in file names.
+
+1.37
+Open a new CLFiler window in the "current selected directory" if it is set.
+Fixed bug with thumbnail mode when directory has only small size images (dimensions less than 180x180).
+Changed adaptive thumbnails display mode. Load and measure sprites dimensions which should be displayed.
+Attempt to fix vertical alignment of the small images in case long (multiline) file names.
+
+1.36
+Prevent run multiple instances of CLFiler as it may cause internal database corruption
+
+1.35
+Implemented set file type automatically based on extension by hot-key 'Shift-S' and via 'Selection' menu.
+ The file types are configured in the 'autofiletypes' file. File format: 
+ <file type1 hex>:<ext1>,<ext2>,..
+ <file type2 hex>:<ext1>,<ext2>,..
+Change in the directory size counting, count 1Kb per each directory itself.
+ 
+1.34
+Implemented drag&drop from the treeview.
+Implemented Shift-T hot key to toggle tree view mode: Folers, Filers and Archives, Folders, Archives and !Apps.
+
+1.33
+Implemented Shift-pressed select like in Windows. Works with Shift pressed key + Adjust mouse button.
+Implemented selection of the files/directories by space key.
+Change the dimesions of the new opened window to 942x532 if screen resolution greater than 800x600, if not then use 800x532.
+
+1.32
+Implemented update internal memory cache when items copied or moved to keep directory size info.
+Claim input focus on click by title or during move/resize.
+
+1.31
+Add mouse click listener to tree view, status bar, toolbar subwindows and claim focus when mouse clicked by any window.
+Don't automatically clear the "paste" clipboard after the copy. Can "paste" multiple times.
+Fixed scroll position in the "search by typing" function.
+
+1.30
+Fixed inplace rename by Enter key.
+Implemented "Access" function.
+Implemented "Count" function.
+Show message in the status line 'No file name or folder found with first letter "x"' in case the "jump to file" function can't find file/dir by typed prefix.
+
+1.29
+Fixed bug with auto open directory
+Fixed bug with double redraw after delete.
+Fixed bug with collapsed root node in the treeview after opening window.
+Show grey icon in the iconbar if the app is not initialized yet, change to color icon when initialization completes.
+
+1.28
+Change the refresh directories function. When change directory then it will rescan with deep level 0 (only current dir)
+ But when it has other subdirs with size = 0 then that subdirs is scanned on deep level 2.
+Fixed bug with delete.
+Fixed bug with open main UI when app is not initialized yet.
+Show search process information on the bottom status bar instead separate label.
+
+1.27
+Added status bar indication which directory is scanned/refreshed now.
+Increased scan level to 2 directories deep. If the directory has only subdirectories without 
+ files then it will be scanned even more deeper until files are found.
+Added menu item "Refresh directories sizes".
+
+1.26
+Change the initialization process. Shop the app icon immediately and do initialization tasks in background.
+ 
+1.25
+Scan directories 2 levels deep when changing the current directory.
+Update status line with "<dir>  refreshing..." text when refresh starts and remove it when refresh ends.
+Refresh does every time to detect added/removed/changed items, it is executed in the background.
+Main content is updated after the refresh finishes and only when refresh finds some changes.
+ (item renamed, added, deleted or size changed)
+Implemented command-line option -debug which turn on debug logging. Without that option all debug logging is turned off.
+
+1.24
+Fixed bug with background color in the Timeline and Search mode (it was not reset if the selected folder has different color)
+Run background update of the child folders size and other info, scan on 1 level deep. Do visual refresh only if info was changed.
+
+1.23
+Implemented PNG thumbnails for images with alpha channel. For other images used JPG thumbnails.
+
+1.22
+Refresh directory sizes when visiting directories.
+
+1.21
+Fixed error and possible crash when drag&drop between multiple CLFiler windows.
+
+1.20
+Reduced margins between files rows.
+
+1.18
+Fixed !Apps icons in the thumbnail modes
+Added column Modified Date to the Timeline Files list mode.
+Added Ctrl-N hotkey to open new window.
+
+1.17
+Changed export of CSV. Implemented 3 additional menu items:.
+ Only current folder
+ With subfolders
+ Subfolders and !Apps
+Always show Timeline control buttons.
+
+
+1.16
+Speedup of the thumbnails modes if the directory has many images.
+Changed confirm in the copy/move operation, if selected in Choices "No confirm if shift or ctrl pressed"
+ then confirmation dialog will not appear.
+Show directory size if it was calculated before.
+ But size may be not correct if some files were added or removed (directory size is only calculated when switched
+ to 2D bars or 2D boxes modes).
+Fixed jumping to file by typing (the 'C' key did not work)
+Fixed show file size in bytes as xx.yB (instead xxB) in the status line.
+Implemented open new window when file or directory dropped on the CLFiler iconbar icon.
+Changed a way of naming the thumbnail files to reduce the amount of file operations. 
+ Detecting the change of source file by source size change.
+
+1.15
+Fixed return focus back to main directory window when "Set file type" or "Create new dir" window opened and closed.
+Fixed bug with possible double click event handling in the Timeline.
+Implemented saving thumbnails to JPEG.
+
+1.14
+Fixed CSV export.
+Fixed RMENSURE module versions.
+Fixed some bugs that may cause crashing.
+Reduced min wimpslot size from 22M to 10M.
+
+1.13
+Fixed inplace rename input. In the thumbnail mode it may become too small.
+Changed the error messages a little. Show only error message in case of error during rename.
+
+
+1.12
+Changed type "typing search" algorithm. When typing the same letter multiple times then CLFiler will select the next found item like in the Windows.
+
+1.11
+Fixed problem with Color selector dialog. The transparent flag was set always.
+
+1.10
+Added background color input in the all "SaveAs <image>" dialogs.
+When image view window closed then return input focus back to CLFiler directory window.
+Added check for ImageMagick on image save.
+
+1.09
+Grab input focus on opening a new window.
+Change CSV output format. Put text cells in quotes.
+
+1.08
+Make and cache thumbnails for sprites if its size is more than 300Kb for faster thumbnails repaint.
+ Smaller sprites are not cached and painted directly.
+Attempt to make "adaptive" thumbnails display.
+ If all thumbnails have width > height then try to draw it in a more "compact" way.
+ But "compact" mode is used only when all thumbnails are already generated and its aspect ratio is known.
+ Otherwise "normal" mode is used and thumbnail cell have square fixed size.
+Changed Copy/Move confirmation window title from "Copy or move?" to "Copy of move <file name> (<file type>)?".
+Implemented export directory contents with all subdirectories as CSV. It can be found in the menu Action->Export as CSV...
+Implemented "-toolbars x" command-line option to switch on/off toolbars. 
+ Where x is one of: 3 - all on, 2 - treeview off, 1 - treeview & status bar off, 0 - all off
+
+1.07
+Fixed thumbnails to show full 180x180 box
+Fixes draw overlapping in tiny mode.
+
+1.06
+Implemented command-line option "-open". Open window at application start.
+Implemented command-line option "-dir <dirpath>". Open the specified directory path at click on the CLFiler IconBar icon.
+Options can be used together in that case at app start the window will open in the specified path.
+Cut long file names to multiline display not only by space but by any punctuation characters.
+Implemented switch Toolbars visibility by Ctrl-T as: 
+ Show Top toolbar, Status bar, Treeview
+ Show Top toolbar, Status bar
+ Show Top toolbar
+ Hide all
+
+1.05
+Hope fixed the problem with crashing
+Disable saving and restoring at the start the last visited directory.
+
+1.04
+Implemented handling following options in the Choices (Tree settings):
+ Show normal folders
+ Show image files too (e.g. .ZIP archives that act as folders)
+ Show image files and Applications too
+Show file sizes in the bottom status bar with 1 digit decimal fraction (example: 20Mb -> 20.3Mb)
+
+1.03
+Fixed redraw issues when image or video is corrupted and can't be loaded.
+Implemented search and select item by key press, currently it handles only ASCII chars, search is case-insensitive.
+Used solid white color as background in the image preview. Convert the image to sprite before display for faster redraw.
+
+
+1.02
+Implemented pane (drag) image in the image viewer by mouse.
+Implemented zoom in/out in the image viewer by Ctrl + mouse wheel scroll.
+Fixed bug with "Set Type" dialog when it called by hotkey Ctrl-S
+Fixed bug in the "Copy As" dialog when it called by hotkey Shift-C
+Attempt to fix bug with draw main content on bottom status bar.
+
+
+1.01
+1. Fixed bug with black background color (text also was black)
+2. Check if the path actually exists when changing the directory. If not exists then go to parent 
+and up to root. If root also does not exist then select the first available root.
+3. Show warning about missing Imagemagick/FFMpeg/.. only 1 time.
+4. Show file type at front of the file path in the image viewer.
+5. Stop scanning all found roots, only scan the last displayed root item.
+6. Implemented "predefined-roots" feature. You may add manually some not detected root directories 
+in the "Choices.CLFiler.predefined-roots" and it will added to a roots list (if actually present). 
+Write every root path on new line, like this:
+Fat32fs::SSD_FAT
+Fat32fs::Ti_FAT
+8. Add the missing "Thumbnails" submenu in the "Display->Folder" view mode select menu.
+
+1.00
+Implemented bottom status bar
+Implemented "2D boxes" view
+Fixed Select/Adjust double click. By default open new window by Adjust double click.
+Show selected item details in the bottom status bar.
+Fixed bug with Invalid Component ID error when go to Search or Timeline modes
+Fixed crash when go to Search mode and back
+Fixed Root item selection and Treeview update when go to Favorite folder and its root is different.
+Fixed bug when drag/drop to same folder
+Fixed bug when "Copy path to clipboard" function also set current directory to Favorites.
+Added Help text for interface elements (buttons/icons). The !Help app must be loaded to make it work.
+Implemented thumbnail view modes (large/medium/small/tiny). Currently only sprites, JPG and PNG images are supported. Images cached in memory (~16Mb used for cache). Thumbanils stored in the <CLFiler$ChoicesDir>.thumbnails directory.
+Implemented image (photo) view window by double-click of right mouse button on the supported image file. The '+' and '-' keys increase and decrease zoom level, '*' key set 100% zoom level and the "escape" key closes the window.
+Added support for Draw images thumbnails.
+Added support for GIF (0x695), TIFF (0xFF0), SVG (0xAAD), WEBP (0xA66), PSD (0xF98) image formats. Needs to have !ImageMagick installed and loaded as CLFiler uses the command "convert" to convert that images to sprites.
+Added support for video files thumbnails. Needs to have !FFmpeg installed and loaded.
+Implemented show next/prev image in the image preview window using Left/Right keys.
+Implemented SaveAs image in different formats in the image preview window. The ImageMagick used for image formats conversion.
+Implemented display checkerboard background in the image preview window.
+Implemented support for different options in the Save As PNG.
+Implemented saving vector images as bitmaps (Draw->PNG for example)
+Implemented multiline file names output in "thumbnails" and "Large icons" modes.
+Implemented support for ArtWorks vector files.
+Implemented Delete image function in the Image view by Del/Ctrl-K key shortcut or via menu.
+Fixed bug with "Set type" called by Ctrl-S key shortcut (current type was not set correctly).
+Fixed bug with drag on SparkFS filer icon on icon bar.
+Implemented adaptive thumbnails mode, if the directory has no thumbnails then in big and medium thumbnails modes it switches automatically to small thumbnails.
+Don't show file type in Timeline mode for Timeline Directories and Timeline Apps modes as all items have the same file type (directory or app).
+Implemented sort by file type.
+
+0.79
+Implemented hot keys:
+Ctrl-Up      - go up level (to parent directory)
+Ctrl-Left    - go backward (to previous directory)
+Ctrl-Right   - go forward  (reverse go backward)
+For "Action" submenu use current selected directory item (if available)
+Implemented per directory saving the "View mode" (big icons, small icons, details, ...) and sort order settings. Saved settings inherited from the parent directory.
+Added ability to set the sort order via "Display->Folder" menu of directory menu like in standard filer.
+Save toolbars state after toggle and open in the same state after restart.
+Fixed bug with incorrect size icons in the small icons mode.
+Fixed bug with Refresh directory contents
+
+0.78
+Implemented "Open Drive" submenu in the iconbar menu with detected drives. Click will open new window with the selected drive.
+Use "-Shift" option when run app only if Filer version > 2.40
+Show disclaimer at the application first start.
+
+0.77
+Moved "New widdow" menu item to "New"->"Window"
+Moved "Create new directory" menu item to "New"->"Directory"
+
+
+0.76
+Fixed drag&drop to/from RiscOS filer.
+Attempt to scan the root directories of the ShareFS.
+Fixed empty icon for unknown file types.
+Do nothing if items dragged to the same directory instead show the error.
+Implemented "Set directory" menu item and Ctrl-W hot-key to set the currently opened directory as current.
+Set "Allow off-screen" flag.
+Show file size for files only in the "list" mode.
+Open parent directory (like standard RISC OS Filer) when the window is closed by Adjust button. 
+Open parent directory by Ctrl-H shortcut
+Start implementing Confix "Choices" module and configuration options.
+Implemented key shortcut CTRL + T to show/hide Toolbar
+Implemented key shortcut Shift + T to toggle left side TreeView
+Implemented Display submenu with show/hide treeview and top toolbar and change view mode: Large icons,Small icons,Full info
+Implemented menu in the TreeView
+Implemented "Copy as" function in the file selection menu, shortcut Shift-C
+Implemented "Help" in the file selection menu
+Implemented "Stamp" function in the file selection menu
+Implemented "Case sensetive" search option. By default used case-insensetive search.
+Fixed bug in the Search (sometimes file is not found but present on FS)
+Added ShareFS support, it scan files with type 0xbda in the Resources:$.Discs and then filter out own Shares.
+Hope fixed problems with saving/load (drag&drop) from/to other applications
+Implemented "Directory size" list mode. It will scan currently selected directory and all subdirectories and calculate size.
+Implemented directory sorting by name/date/size.
+Fixed bug when sometimes name and icon is not displayed in the list mode.
+Fixed bug when you click on the treeview item then directory is not changed and item may disappear from treeview.
+Fixed bug in "Set type" when type "zip" but set "Bzip2"
+Fixed copy/move to the treeview of another window
+Implemented "Open path in the new window" option.
+Fixed Select/Adjust double click action. It is configured in the Choices. It is specified which double click button will open directory or image file (zip for example) in the new window and which button will open in the current window or run app.If selected "Select double click"  then it will open directories in the new window and Adjunst will open in same window or run app.If selected "Adjust double click" then it will open directories in the new window and Select will open in same window or run app.
+Fixed bug with update button icons on the toolbar.
+Fixed Run/Open file with Shift key pressed.
+Make sort order by file names case-insensitive
+Attempt to fix wrong dir size calculation in case many small files.
+Fixed crash when copy/move many selected files.
+Implemented "Names with Directories first" sort order.
+Fixed bug with truncated file names in the "Full info" and "2D size bars" view modes.
+Added disabled "2D boxes", "3D boxes", "3D circular", "Flowers" options to "View mode" selector.
+Implemented "Currently selected item"->"Action"->"Copy path to clipboard" menu item.
+Implemented "KeyShortcuts"->"ClipboardKeys" option handling. Currently it only changing hot keys for Delete operation Ctrl-K/Del
+Implemented Favorite directories function. Current directory added and removed to/from Favorites via current directory menu Action->"Add to favorite locations" Action->"Remove from favorite locations"
+Implemented Forward/Backward directory change feature.
+Fixed crash when 'harddisc' Wimp icon is true color 32 bit sprite.
+Fixed possible crash when root directory changed.
+Fixed possible crash when directory have files with same name but different file types (this may happens on RPCEmu)
+Fixed refresh directory content after drag&drop to treeview.
+Added key shortcuts to Copy/Move dialog. 'C' - Copy, 'M' - Move, ESC - close dialog.
+Fixed separators on the top toolbar.
+Implemented remove item from "Favorites" by adjust button click on the Favorite item in the menu.
+Fixed bug when "Favorites" icon is visible even with no favorites.
+Fixed bug with small icons in the content view. Use small file types icons and "sm!xxx" app icons.
+Optimized redraw on resize window. Optimized initial redraw when new window opened.
+Hope fixed problem with double refresh.
+Fixed drag selection.
+Removed feature which turn-on inplace rename on two clicks (not dbl-click) and it may turn on unexpected and delays between click must be > 1 sec., otherwise Wimp will think that it was dbl-click.
+Added check for "JPG" string in the set file type dialog.
+Fixed "set directory" in the treeview menu.
+Fixed "Copy path to clipboard", it was append wrong \0 byte at end
+
+0.75
+Fixed TreeView icon bug
+Fixed bug with dragging (add dragging item to selection)
+Removed "untitled" text in the Create New directory dialog.
+Open each new window with shift by +50 pixels bottom/right (reset position when window does not fits on screen).
+Fixed problem with wrong position of the Treeview after window maximize.
+Fixed bug with dragging (when item dragged to empty space).
+Implemented refresh roots button.
+
+0.74
+Fixed directories update in all opened CLFiler windows when move files between filer windows.
+Fixed bug with dragging multiple items for move/copy.
+Fixed bug with empty icon for unknown file type.
+Changed icon for the TreeView On/Off switch.
+Implemented set file type for multiple selected files.
+
+0.73 
+Implemented FS caching and background FS updates.
+Improve display speed (show cached content and then start update in background)
+Fixed "open in new window" funcion. Update treeview also.
+Implemented "Search" function.
+Implemented the turn on/off the side treeview panel. 
+Implemented "No matches found in xxx" info box when search did not find anything.
+Add image files and !apps to the treeview when it opened.
+
+0.6
+Implemented actions submenu for currently selected file(s)/directory(s)
+Implemented copy/move confirmation on the drag&drop operation.
+Implemented copy/move from directory content window to the treeview.
+Implemented rename by Ctrl-R shortcut key.
+Add spalsh screen with Donate button. Splash screen will shown on 5 sec. then closed automatically.
+
+0.5 
+Implemented drives (root directories) selection..
+The root directories are detected by checking ADFS, SCSIFS, CDFS, IDEFS, RAM, SDFS, SATAFS and then attempting to canonicalize paths like ADFS::0.$, ADFS::1.$, ... ADFS::7.$
+As HostFS does not have HostFS::0, HostFS::x drives then it added separately as HostFS::HostFS.$ if HostFS is present in the system.
+Implemented small harddisc icon and make all icons in the treeview small.
+Implemented "set directory background color" toolbar button. Selected color saved and inherited by all subdirectories.
+Implemented "New directory..." menu option to create new directory.
+Don't show numeric file type for known file types.
+Implemented inplace rename.
+Changed "Rename..." menu option to use inplace input field instead of separate window.
+Fixed bug in TBX caused high CPU load after using yield() function.
+Fixed bug with List Mode redraw.
+Don't paint the directory contents window background with Wimp color if "None" color is selected. This fixes the display of the Wimp window background image.
+Implemented copy/move to the other directory of the same window by drag&drop. Right now the dropped item is copied if Ctrl key is pressed and moved otherwise. Copy/move is possible only to directories, copy/move to !apps directories are not allowed, needs to make a decision about it, maybe to allow copying/move to !apps too. If copy/move operation is accepted then the destination directory is marked by a rectangle around it.
+
+0.4
+Implemented "Set file type".
+File type can be changed by one of 3 ways:
+a) Selected from the Stringset which contains all currently registered file types.
+b) Filetype name can be typed manually (Example: zip). In this case it will search in the stringset values and matching file type will be used.
+c) Filetype value can be typed as &XXX hex value. This allows you to set any file type, even not a currently registered one.
+
+0.3
+Implemented File Attributes in the List mode.
+Show Keyboard shortcuts in the directory contents menu.
+When "copy" or "Move" command selected then show message
+"xxx will be copied/moved if you select Paste command" in the top toolbar status line.
+Implemented "Select all","Clear selection", "Refresh" commands.
+
+0.2
+Implemented copy/move between own windows. By default if source and destination on the same filesystem then
+items moved, if source and destination on the different FS then items copied. 
+If Ctrl key pressed during the drag-drop then items copied always even on same filesystem.
+
+
+0.1
+Drag & drop between RISCOS Filer and CL Filer.
+Drag & drop from/to other application still buggy.
+
+By default don't scan applications directories in the treeview.
+Application directory can be seen by double click with Shift Key pressed like in the original Filer. Zip archives are also opened by double click but not added to treeview by default.
+Archives and applications will be added to treeview only when opened and will be removed.
+if the parent (or root) directory is selected because treeview content is refreshed and rescanned again.
+to keep in sync with the actual filesystem (for cases when a directory removed or renamed by another application),
+And as archives and application directories are not scanned then its content will be removed.
+

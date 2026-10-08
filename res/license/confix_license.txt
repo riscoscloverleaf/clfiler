@@ -1,0 +1,12 @@
+coLicence
+-------
+!ConfiX is copyright of X-Ample Technology bv of The Netherlands.
+It may be distributed free of charge, provided that the full
+application is supplied (including this file) and no alterations
+are made. If !ConfiX is supplied with a commercial package,
+an evaluation copy of that package would be appreciated.
+
+   March 2002
+   X-Ample Technology bv
+   Paul Reuvers
+   support@xat.nl

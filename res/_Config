@@ -1,0 +1,162 @@
+| CLFiler 1.32 Configure definitions
+| Last changed: 28 May 2023
+
+Title = Cloverleaf Filer choices
+LineUp = 0
+Debug = 0
+Width = 1200
+Height = 466
+VersionCheck = 0.76
+Profiles = 0
+|Layout = ScrollIcons
+
+[Mouse]
+
+Icon = mouse
+Text = Mouse and keyshortcuts setup
+Short = GUI setting
+Width = 250
+
+|{
+| Name = CLFilerGUI
+| Text = GUI setting
+| Type = Radio
+| Menu = CLfilerHandling;RISC OS Classic,1;RISC OS Cloverleaf,2
+| Stack = vertical
+| Default = 2
+| Help = General user interface setting
+| Comment = This decides weather the classic RISC OS filer handling is used or the Cloverleaf handling scheme.
+|}
+
+|{
+| type = ruler
+| height = 20
+|}
+
+{
+ Name = OpenWindowClick
+ Text = Open new window
+ Type = Radio
+ Menu = OpenWindoClick;Select double click on folder,1;Adjust double click on folder,2
+ Stack = vertical
+ Default = 2
+ Help = Decide mouse click will open a new window
+}
+
+
+[Windows]
+
+Icon = windows
+Text = Window actions
+Short = Windows
+Width = 350
+
+{
+ Name = OpenNewWindow
+ Text = Open new window
+ Type = Radio
+ Menu = OpenNewWindowOption;Open with all toolbars switched on,3;Open with tree switched off,2;Open with tree and bottom statusbar off,1;Open with all toolbars switched off,0
+ Default = 3
+ Help = Decide what toolbars or filer tree is shown in new opened windows
+}
+
+
+
+[TreeOptions]
+
+Icon = tree
+Text = Tree settings
+Short = Tree setup
+Width = 250
+
+|{
+|Name = FilerTreeDrivesOne
+|Text = Drives in tree
+|Type = Radio
+|Menu = FilerDrivesShow;Show selected drive,1;Show all drives,2;
+|Default = off
+|Help = Decide which drives are shown in the tree
+|
+|
+|Type = Ruler
+|Height = 20
+|
+
+{
+ Name = TreeviewItemsShown
+ Text = Show image files like ZIP in the treeview
+ Type = Radio
+ Menu = TreeDisplayOpt;Show normal folders,1;Show image files too (e.g. .ZIP archives that act as folders),2;Show image files and Applications too,3
+ Default = 1
+ Help = Setup which files should be displayed in the treeview
+ OptHelp = Show only folders in tree;Show folders and ZIP files in tree;Show folders and !Apps and ZIP files in tree
+}
+
+
+[KeyShortcuts]
+
+Icon = keyb
+Text = Key  settings
+Short = Key setup
+Width = 400
+
+|{
+| Name = Hotkey
+| Text = Open Filer hotkey
+| Type = Radio
+| Menu = HotkeyOpenCLFiler;OS logo key + F,1;OS logo key + SHIFT + F,2;CTRL + SHIFT + F,3
+| Default = 1
+| Help = Setup which key combination opens the CLfiler
+|}
+|{
+| type = ruler
+| height = 20
+|}
+{
+ Name = ClipboardKeys
+ Text = Keyboard shortcuts setting
+ Type = Radio
+ Menu = ClipboardKeysChoice;RISC OS Classic,1;RISC OS Modern,2
+ Default = 2
+ Help = Choose how you want keyboard shortcuts to behave
+}
+
+
+{
+ type = ruler
+ height = 20
+}
+
+[Files]
+
+Icon = floppy
+Text = File actions
+Short File options
+Width = 350
+
+{
+ Name = CopyMoveConfirm
+ Text = Confirm operations
+ Type = Radio
+ Menu = ConfirmDialog;Always confirm,1;No confirm if shift or ctrl pressed,2
+ Default = 1
+ Help = Setup which when confirm copy/move
+}
+
+|{
+| Name = Overwrite
+| Text = File overwrite
+| Type = Radio
+| Menu = OverwriteDialog;Always confirm,1;Confirm when older file,2;Confirm when smaller file,3;No confirmation,4
+| Default = 1
+| Help = Setup when a confirmation is needed to overwrite a file
+|}
+
+|{
+| Name = HistoryFS
+| Text = Integration of HistoryFS
+| Type = Radio
+| Menu = HistoryFSOptions;Show as option,1;Use always,2;Use when younger file is overwritten,3;Deactivated,4
+| Default = off
+| Help = Setup when HistoryFS is used
+|}

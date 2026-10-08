@@ -1,0 +1,91 @@
+CLFiler
+=======
+Improved Filer-like application.
+
+
+Multiple windows with copy/move and Drag-drop files/directories between.
+When you drop the files(s) then you will asked to Copy or Move the files.
+
+Disk Treeview at the left side.
+Archives and applications will be added to treeview only when opened and will be removed when
+the parent (or root) directory is selected because treeview content is refreshed and rescanned again
+to keep in sync with the actual filesystem (for cases when a directory removed or renamed by another application),
+
+CLFiler can detect following filing sytems at start:
+ADFS, SCSIFS, CDFS, IDEFS, RAM, SDFS, SATAFS, DOSFS, FAT32FS, ShareFS
+
+You may add manually some not detected filesystems (FS) or root directories in the
+"!Boot.Choices.CLFiler.predefined-roots" text file. Any entries in that file will be added to the drive selector list.
+This is a workaround for not automatically detected file systems.
+Note: the checking is filesystems actually exists is not performed to avoid situations when many filesystem icons 
+appeared on the iconbar. The syntax for text file "predefined-roots" is simple. 
+Write every root path, like you see it in the legacy RISC OS lFiler, in a new line, like this:
+ Fat32fs::SSD_FAT
+ NFS::Ti_FAT
+ Lanman98::Ti_FAT
+
+Keyboard shortcuts
+==================
+Up/Down
+Left/Right   - Move selection bar in the current directory
+Return       - Open or run selected directory or file
+Del / Ctrl-K - Delete select file(s)
+Ctrl-A       - Select all in the current directory
+Ctrl-Z       - Clear selection (deselect all)
+Ctrl-C       - "copy" file(s) to internal clipboard to "paste" into other directory
+Shift-C      - "Copy As" copy first selected file with new name in the same directory
+Ctrl-X       - "cut" file(s) to internal clipboard to "paste" into other directory
+Ctrl-V       - "paste" (copy) the file(s) that was "copied" or "cut" before.
+Ctrl-D       - Create new directory
+Ctrl-F       - Toggle "Search" mode.
+Ctrl-H       - Open parent directory
+Ctrl-N       - Open new window
+Ctrl-M	     - Open new window with all toolbars off.
+Ctrl-R       - Rename file
+Ctrl-S       - Set file type
+Ctrl-O       - Stamp files (set current timestamp as edit date)
+Ctrl-T       - toggle top toolbar
+Shift-T      - toggle left side tree view
+Ctrl-W       - set current directory
+Ctrl-Up      - go up level (to parent directory)
+Ctrl-Left    - go backward (to previous directory)
+Ctrl-Right   - go forward  (reverse go backward)
+F1           - Help
+F2           - Set "Large icons" view mode
+F3           - Set "Small icons" view mode
+F4           - Set "Full info" view mode
+F11          - Refresh current directory
+
+
+
+Credits & copyrights
+====================
+  tbx (C++ class library for creating RISC OS applications)
+    Alan Buckley
+    <URL:https://sites.google.com/site/alansriscosstuff/tbx>
+
+  libpng (the PNG library):
+    Glenn Randers-Pehrson, Greg Roelofs, Guy Eric Schalnat and others
+    <URL:ftp://ftp.freesoftware.com/pub/png/>
+
+  zlib (the compression library):
+    Jean-loup Gailly & Mark Adler
+    <URL:ftp://ftp.cdrom.com/pub/infozip/zlib/>
+
+  Draw to sprite:
+    modified from Peter Hartley's Draw rendering code in
+
+  InterGif
+    <URL:http://utter.chaos.org.uk/~pdh/software/intergif.htm>
+
+  draw2spr (utility to convert Draw to sprite from spr2png app)
+    Darren Salt
+
+  rufl (RUfl is the RISC OS Unicode font library.)
+    <URL:https://www.netsurf-browser.org/projects/rufl/>
+
+  ImageMagick for load/save and manipulate image files
+    www.imagemagick.org
+
+  FFmpeg for loading and editing movies
+    www.ffmpeg.org

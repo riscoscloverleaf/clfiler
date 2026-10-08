@@ -1,0 +1,4477 @@
+RESF:1.01
+
+iconbar_object {
+  header_flags:toolbox_OBJECT_CREATE_ON_LOAD | toolbox_OBJECT_SHOW_ON_CREATE
+  version:100
+  object_name:"Iconbar"
+  iconbar_flags:iconbar_GENERATE_SELECT_CLICKED
+  position:wimp_ICON_BAR_LEFT
+  priority:0
+  sprite_name:"!clfiler"
+  sprite_limit:15
+  text:""
+  text_limit:*
+  menu:"MIconbar"
+  select_action:&101
+  adjust_action:&0
+  select_show:""
+  adjust_show:""
+  help_message:""
+  help_limit:*
+}
+
+menu_object {
+  header_flags:
+  version:102
+  object_name:"MIconbar"
+  menu_flags:menu_GENERATE_ABOUT_TO_BE_SHOWN
+  title:"CLFiler"
+  title_limit:*
+  help:""
+  help_limit:*
+  show_action:&0
+  hide_action:&0
+  Entry {
+    cmp:2
+    flags:menu_ENTRY_SUB_MENU | menu_ENTRY_GENERATE_SUB_MENU_ACTION
+    cmp:&2
+    text:"Info"
+    text_limit:*
+    click_object_name:""
+    sub_menu_object_name:"ProgInfo"
+    sub_menu_action:&0
+    click_action:&0
+    help:""
+    help_limit:*
+  }
+  Entry {
+    cmp:5
+    flags:menu_ENTRY_SUB_MENU | menu_ENTRY_GENERATE_SUB_MENU_ACTION
+    cmp:&5
+    text:"Open Drive"
+    text_limit:*
+    click_object_name:""
+    sub_menu_object_name:"MRoots"
+    sub_menu_action:&0
+    click_action:&0
+    help:""
+    help_limit:*
+  }
+  Entry {
+    cmp:4
+    flags:
+    cmp:&4
+    text:"Help...  F1"
+    text_limit:*
+    click_object_name:""
+    sub_menu_object_name:""
+    sub_menu_action:&0
+    click_action:&0
+    help:""
+    help_limit:*
+  }
+  Entry {
+    cmp:3
+    flags:menu_ENTRY_SEPARATE
+    cmp:&3
+    text:"Choices..."
+    text_limit:*
+    click_object_name:""
+    sub_menu_object_name:""
+    sub_menu_action:&0
+    click_action:&102
+    help:""
+    help_limit:*
+  }
+  Entry {
+    cmp:1
+    flags:
+    cmp:&1
+    text:"Quit"
+    text_limit:11
+    click_object_name:""
+    sub_menu_object_name:""
+    sub_menu_action:&0
+    click_action:&100
+    help:"Click here to exit the application."
+    help_limit:*
+  }
+}
+
+window_object {
+  header_flags:toolbox_OBJECT_ANCESTOR
+  version:102
+  object_name:"WFilerDir"
+  window_flags:window_GENERATE_ABOUT_TO_BE_SHOWN | window_AUTO_CLOSE | window_GENERATE_DIALOGUE_COMPLETED
+  help_message:""
+  help_limit:*
+  sprite_name:""
+  pointer_limit:0
+  hotspot:0,0
+  menu_name:"MDirectory"
+  default_focus:toolbox_WINDOW_FOCUS
+  show_action:&0
+  hide_action:&0
+  toolbar_ibl:""
+  toolbar_itl:""
+  toolbar_ebl:""
+  toolbar_etl:""
+  window.visible:480,704,2200,1724
+  window.xscroll:0
+  window.yscroll:-4
+  window.next:wimp_TOP
+  window.flags:wimp_WINDOW_MOVEABLE | wimp_WINDOW_SCROLL_REPEAT | wimp_WINDOW_IGNORE_XEXTENT | wimp_WINDOW_IGNORE_YEXTENT | wimp_WINDOW_BACK_ICON | wimp_WINDOW_CLOSE_ICON | wimp_WINDOW_TITLE_ICON | wimp_WINDOW_TOGGLE_ICON | wimp_WINDOW_VSCROLL | wimp_WINDOW_SIZE_ICON | wimp_WINDOW_NEW_FORMAT
+  window.title_fg:wimp_COLOUR_BLACK
+  window.title_bg:wimp_COLOUR_LIGHT_GREY
+  window.work_fg:wimp_COLOUR_BLACK
+  window.work_bg:wimp_COLOUR_VERY_LIGHT_GREY
+  window.scroll_outer:wimp_COLOUR_MID_LIGHT_GREY
+  window.scroll_inner:wimp_COLOUR_VERY_LIGHT_GREY
+  window.highlight_bg:wimp_COLOUR_CREAM
+  window.extra_flags:
+  window.extent:0,-90000,1720,-4
+  window.title_flags:wimp_ICON_TEXT | wimp_ICON_HCENTRED | wimp_ICON_VCENTRED | wimp_ICON_INDIRECTED
+  window.work_flags:wimp_BUTTON_REPEAT | wimp_BUTTON_DOUBLE_DRAG
+  window.sprite_area:&ffffffff
+  window.xmin:600
+  window.ymin:200
+  window.title_text:"CL Filer"
+  window.title_text_limit:255
+  window.title_valid:""
+  keyboardshortcut_object {
+    flags:
+    key_code:&4
+    key_event:&0
+    key_show:"WCreateDir"
+  }
+}
+
+window_object {
+  header_flags:toolbox_OBJECT_ANCESTOR
+  version:102
+  object_name:"SWFilerTBar"
+  window_flags:window_GENERATE_ABOUT_TO_BE_SHOWN | window_GENERATE_DIALOGUE_COMPLETED
+  help_message:"Filer toolbar"
+  help_limit:*
+  sprite_name:""
+  pointer_limit:0
+  hotspot:0,0
+  menu_name:""
+  default_focus:toolbox_NULL_COMPONENT
+  show_action:&0
+  hide_action:&0
+  toolbar_ibl:""
+  toolbar_itl:""
+  toolbar_ebl:""
+  toolbar_etl:""
+  window.visible:32,1008,2024,1264
+  window.xscroll:0
+  window.yscroll:-4
+  window.next:wimp_TOP
+  window.flags:wimp_WINDOW_MOVEABLE | wimp_WINDOW_AUTO_REDRAW | wimp_WINDOW_IGNORE_XEXTENT | wimp_WINDOW_IGNORE_YEXTENT | wimp_WINDOW_BACK_ICON | wimp_WINDOW_CLOSE_ICON | wimp_WINDOW_TOGGLE_ICON | wimp_WINDOW_SIZE_ICON | wimp_WINDOW_NEW_FORMAT
+  window.title_fg:wimp_COLOUR_BLACK
+  window.title_bg:wimp_COLOUR_LIGHT_GREY
+  window.work_fg:wimp_COLOUR_BLACK
+  window.work_bg:wimp_COLOUR_VERY_LIGHT_GREY
+  window.scroll_outer:wimp_COLOUR_MID_LIGHT_GREY
+  window.scroll_inner:wimp_COLOUR_VERY_LIGHT_GREY
+  window.highlight_bg:wimp_COLOUR_CREAM
+  window.extra_flags:
+  window.extent:0,-260,9000,0
+  window.title_flags:wimp_ICON_TEXT | wimp_ICON_HCENTRED | wimp_ICON_VCENTRED | wimp_ICON_INDIRECTED
+  window.work_flags:wimp_BUTTON_ALWAYS | wimp_BUTTON_REPEAT
+  window.sprite_area:&0
+  window.xmin:100
+  window.ymin:76
+  window.title_text:""
+  window.title_text_limit:*
+  window.title_valid:""
+  stringset_object {
+    cmp:&6
+    bbox:12,-64,360,-12
+    help_message:"Select drive"
+    help_limit:*
+    flags:stringset_GENERATE_USER_VALUE_CHANGED | stringset_GENERATE_ABOUT_TO_BE_SHOWN
+    string_set:""
+    title:"Select root"
+    initial_selected_string:""
+    selected_string_limit:200
+    allowable:""
+    allowable_limit:*
+    prev:toolbox_NULL_COMPONENT
+    next:toolbox_NULL_COMPONENT
+  }
+  toolaction_object {
+    cmp:&7
+    bbox:1572,-64,1628,-12
+    help_message:"Open colour picker for directory background colour"
+    help_limit:*
+    flags:toolaction_GENERATE_SELECT | toolaction_SHOW_AS_POP_UP
+    off_text:"gright"
+    off_text_limit:*
+    on_text:""
+    on_text_limit:*
+    click_action:&0
+    select_show:"DDirColor"
+    adjust_action:&0
+    adjust_show:""
+    fade_text:""
+    fade_text_limit:*
+  }
+  button_object {
+    cmp:&8
+    bbox:1488,-64,1572,-16
+    help_message:"Directory background color"
+    help_limit:*
+    flags:
+    button_flags:wimp_ICON_TEXT | wimp_ICON_VCENTRED | wimp_ICON_INDIRECTED | wimp_ICON_RJUSTIFIED
+    button_esg:0
+    button_fg:wimp_COLOUR_BLACK
+    button_bg:wimp_COLOUR_WHITE
+    value:"Color"
+    value_limit:8
+    validation:""
+    validation_limit:*
+  }
+  writablefield_object {
+    cmp:&b
+    bbox:12,-132,312,-80
+    help_message:"Search for that substring"
+    help_limit:*
+    flags:writablefield_GENERATE_USER_VALUE_CHANGED
+    text:""
+    text_limit:200
+    allowable:""
+    allowable_limit:*
+    prev:toolbox_NULL_COMPONENT
+    next:toolbox_NULL_COMPONENT
+  }
+  optionbutton_object {
+    cmp:&c
+    bbox:328,-128,636,-84
+    help_message:"Search inside !app folders"
+    help_limit:*
+    flags:optionbutton_GENERATE_STATE_CHANGED
+    label:"Include !Apps"
+    label_limit:*
+    action:&0
+  }
+  optionbutton_object {
+    cmp:&d
+    bbox:652,-128,1028,-84
+    help_message:"Search inside FS image files (e.g. zip or disc images)"
+    help_limit:*
+    flags:optionbutton_GENERATE_STATE_CHANGED
+    label:"Include ZIP, Arc etc."
+    label_limit:*
+    action:&0
+  }
+  button_object {
+    cmp:&f
+    bbox:972,-64,1028,-12
+    help_message:"Search files and directories"
+    help_limit:*
+    flags:button_TASK_SPRITE_AREA
+    button_flags:wimp_ICON_TEXT | wimp_ICON_SPRITE | wimp_ICON_BORDER | wimp_ICON_HCENTRED | wimp_ICON_VCENTRED | wimp_ICON_INDIRECTED | wimp_BUTTON_CLICK
+    button_esg:0
+    button_fg:wimp_COLOUR_BLACK
+    button_bg:wimp_COLOUR_WHITE
+    value:""
+    value_limit:8
+    validation:"R1;Ssearch"
+    validation_limit:*
+  }
+  button_object {
+    cmp:&10
+    bbox:1652,-64,1708,-12
+    help_message:"Toggle the left side treeview"
+    help_limit:*
+    flags:button_TASK_SPRITE_AREA
+    button_flags:wimp_ICON_TEXT | wimp_ICON_SPRITE | wimp_ICON_BORDER | wimp_ICON_HCENTRED | wimp_ICON_VCENTRED | wimp_ICON_INDIRECTED | wimp_BUTTON_CLICK
+    button_esg:0
+    button_fg:wimp_COLOUR_BLACK
+    button_bg:wimp_COLOUR_WHITE
+    value:""
+    value_limit:8
+    validation:"R1;Stree_icon"
+    validation_limit:48
+  }
+  actionbutton_object {
+    cmp:&11
+    bbox:1372,-132,1532,-80
+    help_message:"Pause search"
+    help_limit:*
+    flags:actionbutton_IS_LOCAL
+    text:"Pause"
+    text_limit:20
+    click_show:""
+    action:&0
+  }
+  button_object {
+    cmp:&12
+    bbox:380,-64,432,-12
+    help_message:"Refresh available drives list and current folder content"
+    help_limit:*
+    flags:
+    button_flags:wimp_ICON_TEXT | wimp_ICON_SPRITE | wimp_ICON_BORDER | wimp_ICON_HCENTRED | wimp_ICON_VCENTRED | wimp_ICON_INDIRECTED | wimp_BUTTON_CLICK
+    button_esg:0
+    button_fg:wimp_COLOUR_BLACK
+    button_bg:wimp_COLOUR_WHITE
+    value:""
+    value_limit:8
+    validation:"R1;Srefresh"
+    validation_limit:16
+  }
+  optionbutton_object {
+    cmp:&13
+    bbox:1060,-128,1328,-84
+    help_message:"Toggle case-sensetive search"
+    help_limit:*
+    flags:optionbutton_GENERATE_STATE_CHANGED
+    label:"Case sensitive"
+    label_limit:*
+    action:&0
+  }
+  button_object {
+    cmp:&14
+    bbox:1060,-64,1120,-12
+    help_message:"Display mode for folders"
+    help_limit:*
+    flags:button_TASK_SPRITE_AREA
+    button_flags:wimp_ICON_TEXT | wimp_ICON_SPRITE | wimp_ICON_BORDER | wimp_ICON_HCENTRED | wimp_ICON_VCENTRED | wimp_ICON_INDIRECTED
+    button_esg:0
+    button_fg:wimp_COLOUR_BLACK
+    button_bg:wimp_COLOUR_WHITE
+    value:""
+    value_limit:15
+    validation:"R2;Ssmall"
+    validation_limit:48
+  }
+  button_object {
+    cmp:&15
+    bbox:952,-60,964,-16
+    help_message:""
+    help_limit:*
+    flags:button_TASK_SPRITE_AREA
+    button_flags:wimp_ICON_SPRITE | wimp_ICON_HCENTRED | wimp_ICON_VCENTRED | wimp_ICON_INDIRECTED
+    button_esg:0
+    button_fg:wimp_COLOUR_BLACK
+    button_bg:wimp_COLOUR_WHITE
+    value:"sep"
+    value_limit:*
+    validation:""
+    validation_limit:*
+  }
+  stringset_object {
+    cmp:&16
+    bbox:1256,-64,1416,-12
+    help_message:"Sort options"
+    help_limit:*
+    flags:stringset_GENERATE_USER_VALUE_CHANGED
+    string_set:"Name,Folder / Name,Date,Size,File type"
+    title:"Sort"
+    initial_selected_string:"Name"
+    selected_string_limit:100
+    allowable:""
+    allowable_limit:*
+    prev:toolbox_NULL_COMPONENT
+    next:toolbox_NULL_COMPONENT
+  }
+  button_object {
+    cmp:&17
+    bbox:1424,-56,1460,-20
+    help_message:"Ascending/descending sort order"
+    help_limit:*
+    flags:
+    button_flags:wimp_ICON_TEXT | wimp_ICON_SPRITE | wimp_ICON_HCENTRED | wimp_ICON_VCENTRED | wimp_ICON_INDIRECTED | wimp_BUTTON_CLICK
+    button_esg:0
+    button_fg:wimp_COLOUR_BLACK
+    button_bg:wimp_COLOUR_WHITE
+    value:""
+    value_limit:16
+    validation:"Sup"
+    validation_limit:16
+  }
+  popup_object {
+    cmp:&18
+    bbox:1128,-60,1172,-16
+    help_message:"Choices for directory display mode"
+    help_limit:*
+    flags:
+    menu_name:"MViewMode"
+  }
+  button_object {
+    cmp:&19
+    bbox:628,-60,680,-12
+    help_message:"Favourite folders"
+    help_limit:*
+    flags:
+    button_flags:wimp_ICON_TEXT | wimp_ICON_SPRITE | wimp_ICON_BORDER | wimp_ICON_HCENTRED | wimp_ICON_VCENTRED | wimp_ICON_INDIRECTED | wimp_BUTTON_CLICK
+    button_esg:0
+    button_fg:wimp_COLOUR_BLACK
+    button_bg:wimp_COLOUR_WHITE
+    value:""
+    value_limit:8
+    validation:"R1;Sfavorite"
+    validation_limit:32
+  }
+  button_object {
+    cmp:&1a
+    bbox:440,-60,492,-12
+    help_message:"Go to parent directory"
+    help_limit:*
+    flags:
+    button_flags:wimp_ICON_TEXT | wimp_ICON_SPRITE | wimp_ICON_BORDER | wimp_ICON_HCENTRED | wimp_ICON_VCENTRED | wimp_ICON_INDIRECTED | wimp_BUTTON_CLICK
+    button_esg:0
+    button_fg:wimp_COLOUR_BLACK
+    button_bg:wimp_COLOUR_WHITE
+    value:""
+    value_limit:8
+    validation:"R1;Suparr"
+    validation_limit:*
+  }
+  button_object {
+    cmp:&1b
+    bbox:500,-60,548,-12
+    help_message:"Go backwards in directory history"
+    help_limit:*
+    flags:
+    button_flags:wimp_ICON_TEXT | wimp_ICON_SPRITE | wimp_ICON_BORDER | wimp_ICON_HCENTRED | wimp_ICON_VCENTRED | wimp_ICON_INDIRECTED | wimp_BUTTON_CLICK
+    button_esg:0
+    button_fg:wimp_COLOUR_BLACK
+    button_bg:wimp_COLOUR_WHITE
+    value:""
+    value_limit:8
+    validation:"R1;Sprev"
+    validation_limit:*
+  }
+  button_object {
+    cmp:&1c
+    bbox:556,-60,600,-12
+    help_message:"Go forward directory history"
+    help_limit:*
+    flags:
+    button_flags:wimp_ICON_TEXT | wimp_ICON_SPRITE | wimp_ICON_BORDER | wimp_ICON_HCENTRED | wimp_ICON_VCENTRED | wimp_ICON_INDIRECTED | wimp_BUTTON_CLICK
+    button_esg:0
+    button_fg:wimp_COLOUR_BLACK
+    button_bg:wimp_COLOUR_WHITE
+    value:""
+    value_limit:8
+    validation:"R1;Sback"
+    validation_limit:*
+  }
+  button_object {
+    cmp:&1d
+    bbox:1036,-60,1048,-16
+    help_message:""
+    help_limit:*
+    flags:button_TASK_SPRITE_AREA
+    button_flags:wimp_ICON_SPRITE | wimp_ICON_HCENTRED | wimp_ICON_VCENTRED | wimp_ICON_INDIRECTED
+    button_esg:0
+    button_fg:wimp_COLOUR_BLACK
+    button_bg:wimp_COLOUR_WHITE
+    value:"sep"
+    value_limit:*
+    validation:""
+    validation_limit:*
+  }
+  button_object {
+    cmp:&1e
+    bbox:688,-56,700,-16
+    help_message:""
+    help_limit:*
+    flags:button_TASK_SPRITE_AREA
+    button_flags:wimp_ICON_SPRITE | wimp_ICON_HCENTRED | wimp_ICON_VCENTRED | wimp_ICON_INDIRECTED
+    button_esg:0
+    button_fg:wimp_COLOUR_BLACK
+    button_bg:wimp_COLOUR_WHITE
+    value:"sep"
+    value_limit:*
+    validation:""
+    validation_limit:*
+  }
+  button_object {
+    cmp:&1f
+    bbox:1184,-56,1196,-16
+    help_message:""
+    help_limit:*
+    flags:button_TASK_SPRITE_AREA
+    button_flags:wimp_ICON_SPRITE | wimp_ICON_HCENTRED | wimp_ICON_VCENTRED | wimp_ICON_INDIRECTED
+    button_esg:0
+    button_fg:wimp_COLOUR_BLACK
+    button_bg:wimp_COLOUR_WHITE
+    value:"sep"
+    value_limit:*
+    validation:""
+    validation_limit:*
+  }
+  button_object {
+    cmp:&20
+    bbox:1468,-56,1480,-16
+    help_message:""
+    help_limit:*
+    flags:button_TASK_SPRITE_AREA
+    button_flags:wimp_ICON_SPRITE | wimp_ICON_HCENTRED | wimp_ICON_VCENTRED | wimp_ICON_INDIRECTED
+    button_esg:0
+    button_fg:wimp_COLOUR_BLACK
+    button_bg:wimp_COLOUR_WHITE
+    value:"sep"
+    value_limit:*
+    validation:""
+    validation_limit:*
+  }
+  button_object {
+    cmp:&21
+    bbox:1632,-56,1644,-16
+    help_message:""
+    help_limit:*
+    flags:button_TASK_SPRITE_AREA
+    button_flags:wimp_ICON_SPRITE | wimp_ICON_HCENTRED | wimp_ICON_VCENTRED | wimp_ICON_INDIRECTED
+    button_esg:0
+    button_fg:wimp_COLOUR_BLACK
+    button_bg:wimp_COLOUR_WHITE
+    value:"sep"
+    value_limit:*
+    validation:""
+    validation_limit:*
+  }
+  button_object {
+    cmp:&22
+    bbox:708,-64,760,-12
+    help_message:"Timeline for last used directories, files and applications"
+    help_limit:*
+    flags:
+    button_flags:wimp_ICON_TEXT | wimp_ICON_SPRITE | wimp_ICON_BORDER | wimp_ICON_HCENTRED | wimp_ICON_VCENTRED | wimp_ICON_INDIRECTED | wimp_BUTTON_CLICK
+    button_esg:0
+    button_fg:wimp_COLOUR_BLACK
+    button_bg:wimp_COLOUR_WHITE
+    value:""
+    value_limit:8
+    validation:"R1;Stimeline"
+    validation_limit:32
+  }
+  button_object {
+    cmp:&23
+    bbox:772,-64,828,-12
+    help_message:"Timeline | Show last visited directories"
+    help_limit:*
+    flags:
+    button_flags:wimp_ICON_TEXT | wimp_ICON_SPRITE | wimp_ICON_BORDER | wimp_ICON_HCENTRED | wimp_ICON_VCENTRED | wimp_ICON_INDIRECTED | wimp_BUTTON_CLICK
+    button_esg:0
+    button_fg:wimp_COLOUR_BLACK
+    button_bg:wimp_COLOUR_WHITE
+    value:""
+    value_limit:8
+    validation:"R1;Stl_folder"
+    validation_limit:32
+  }
+  button_object {
+    cmp:&24
+    bbox:832,-64,884,-12
+    help_message:"Timeline | Show last used files"
+    help_limit:*
+    flags:
+    button_flags:wimp_ICON_TEXT | wimp_ICON_SPRITE | wimp_ICON_BORDER | wimp_ICON_HCENTRED | wimp_ICON_VCENTRED | wimp_ICON_INDIRECTED | wimp_BUTTON_CLICK
+    button_esg:0
+    button_fg:wimp_COLOUR_BLACK
+    button_bg:wimp_COLOUR_WHITE
+    value:""
+    value_limit:8
+    validation:"R1;Stl_files"
+    validation_limit:32
+  }
+  button_object {
+    cmp:&25
+    bbox:888,-64,940,-12
+    help_message:"Timeline | Show last used application"
+    help_limit:*
+    flags:
+    button_flags:wimp_ICON_TEXT | wimp_ICON_SPRITE | wimp_ICON_BORDER | wimp_ICON_HCENTRED | wimp_ICON_VCENTRED | wimp_ICON_INDIRECTED | wimp_BUTTON_CLICK
+    button_esg:0
+    button_fg:wimp_COLOUR_BLACK
+    button_bg:wimp_COLOUR_WHITE
+    value:""
+    value_limit:8
+    validation:"R1;Stl_app"
+    validation_limit:32
+  }
+  button_object {
+    cmp:&26
+    bbox:608,-64,624,-12
+    help_message:""
+    help_limit:*
+    flags:button_TASK_SPRITE_AREA
+    button_flags:wimp_ICON_SPRITE | wimp_ICON_HCENTRED | wimp_ICON_VCENTRED | wimp_ICON_INDIRECTED
+    button_esg:0
+    button_fg:wimp_COLOUR_BLACK
+    button_bg:wimp_COLOUR_WHITE
+    value:"sep"
+    value_limit:8
+    validation:""
+    validation_limit:*
+  }
+  button_object {
+    cmp:&27
+    bbox:1192,-64,1252,-12
+    help_message:""
+    help_limit:*
+    flags:
+    button_flags:wimp_ICON_TEXT | wimp_ICON_SPRITE | wimp_ICON_HCENTRED | wimp_ICON_VCENTRED | wimp_ICON_INDIRECTED
+    button_esg:0
+    button_fg:wimp_COLOUR_BLACK
+    button_bg:wimp_COLOUR_WHITE
+    value:""
+    value_limit:8
+    validation:"Ssort"
+    validation_limit:*
+  }
+}
+
+window_object {
+  header_flags:toolbox_OBJECT_ANCESTOR
+  version:102
+  object_name:"SWDirTree"
+  window_flags:window_AUTO_OPEN | window_AUTO_CLOSE
+  help_message:""
+  help_limit:*
+  sprite_name:""
+  pointer_limit:0
+  hotspot:0,0
+  menu_name:""
+  default_focus:toolbox_NULL_COMPONENT
+  show_action:
+  hide_action:
+  toolbar_ibl:""
+  toolbar_itl:""
+  toolbar_ebl:""
+  toolbar_etl:""
+  window.visible:32,840,724,1264
+  window.xscroll:0
+  window.yscroll:0
+  window.next:wimp_TOP
+  window.flags:wimp_WINDOW_MOVEABLE | wimp_WINDOW_AUTO_REDRAW | wimp_WINDOW_NEW_FORMAT
+  window.title_fg:wimp_COLOUR_BLACK
+  window.title_bg:wimp_COLOUR_LIGHT_GREY
+  window.work_fg:wimp_COLOUR_BLACK
+  window.work_bg:wimp_COLOUR_VERY_LIGHT_GREY
+  window.scroll_outer:wimp_COLOUR_MID_LIGHT_GREY
+  window.scroll_inner:wimp_COLOUR_VERY_LIGHT_GREY
+  window.highlight_bg:wimp_COLOUR_CREAM
+  window.extra_flags:
+  window.extent:0,-9000,1280,0
+  window.title_flags:wimp_ICON_TEXT | wimp_ICON_HCENTRED | wimp_ICON_VCENTRED | wimp_ICON_INDIRECTED
+  window.work_flags:
+  window.sprite_area:&ffffffff
+  window.xmin:480
+  window.ymin:100
+  window.title_text:""
+  window.title_text_limit:*
+  window.title_valid:""
+  treeview_object {
+    cmp:&0
+    bbox:128,-260,428,-96
+    help_message:""
+    help_limit:*
+    flags:treeview_ALLOW_VSCROLL | treeview_ALLOW_HSCROLL | treeview_AUTO_UPDATE | treeview_PLOT_LINES | treeview_NOTIFY_SELECTION | treeview_ALLOW_EXPAND | treeview_NOTIFY_EXPANSION | treeview_ALL_EVENTS | 0x90000
+    foreground:
+    background:wimp_COLOUR_CREAM
+  }
+}
+
+menu_object {
+  header_flags:
+  version:102
+  object_name:"MDirectory"
+  menu_flags:menu_GENERATE_ABOUT_TO_BE_SHOWN
+  title:"Filer"
+  title_limit:255
+  help:""
+  help_limit:*
+  show_action:&0
+  hide_action:
+  Entry {
+    cmp:272
+    flags:menu_ENTRY_SUB_MENU
+    cmp:&110
+    text:"File under mouse"
+    text_limit:250
+    click_object_name:""
+    sub_menu_object_name:"MSelection"
+    sub_menu_action:&0
+    click_action:&0
+    help:""
+    help_limit:*
+  }
+  Entry {
+    cmp:16
+    flags:menu_ENTRY_SUB_MENU
+    cmp:&10
+    text:"Selection"
+    text_limit:250
+    click_object_name:""
+    sub_menu_object_name:"MSelection"
+    sub_menu_action:&0
+    click_action:&0
+    help:""
+    help_limit:*
+  }
+  Entry {
+    cmp:144
+    flags:menu_ENTRY_SUB_MENU | menu_ENTRY_GENERATE_SUB_MENU_ACTION
+    cmp:&90
+    text:"New"
+    text_limit:*
+    click_object_name:""
+    sub_menu_object_name:"MNew"
+    sub_menu_action:&0
+    click_action:&0
+    help:""
+    help_limit:*
+  }
+  Entry {
+    cmp:129
+    flags:menu_ENTRY_SEPARATE | menu_ENTRY_SUB_MENU | menu_ENTRY_GENERATE_SUB_MENU_ACTION
+    cmp:&81
+    text:"Action"
+    text_limit:*
+    click_object_name:""
+    sub_menu_object_name:"MAction"
+    sub_menu_action:&0
+    click_action:&0
+    help:""
+    help_limit:*
+  }
+  Entry {
+    cmp:64
+    flags:
+    cmp:&40
+    text:"Select all       ^A"
+    text_limit:32
+    click_object_name:""
+    sub_menu_object_name:""
+    sub_menu_action:&0
+    click_action:&0
+    help:""
+    help_limit:*
+  }
+  Entry {
+    cmp:80
+    flags:
+    cmp:&50
+    text:"Clear selection  ^Z"
+    text_limit:32
+    click_object_name:""
+    sub_menu_object_name:""
+    sub_menu_action:&0
+    click_action:&0
+    help:""
+    help_limit:*
+  }
+  Entry {
+    cmp:32
+    flags:menu_ENTRY_SEPARATE
+    cmp:&20
+    text:"Paste            ^V"
+    text_limit:32
+    click_object_name:""
+    sub_menu_object_name:""
+    sub_menu_action:&0
+    click_action:&0
+    help:""
+    help_limit:*
+  }
+  Entry {
+    cmp:128
+    flags:menu_ENTRY_SEPARATE | menu_ENTRY_SUB_MENU | menu_ENTRY_GENERATE_SUB_MENU_ACTION
+    cmp:&80
+    text:"Display"
+    text_limit:*
+    click_object_name:""
+    sub_menu_object_name:"MDisplay"
+    sub_menu_action:&0
+    click_action:&0
+    help:""
+    help_limit:*
+  }
+  Entry {
+    cmp:112
+    flags:
+    cmp:&70
+    text:"Set directory    ^W"
+    text_limit:*
+    click_object_name:""
+    sub_menu_object_name:""
+    sub_menu_action:&0
+    click_action:&0
+    help:""
+    help_limit:*
+  }
+  Entry {
+    cmp:96
+    flags:
+    cmp:&60
+    text:"Refresh         F11"
+    text_limit:*
+    click_object_name:""
+    sub_menu_object_name:""
+    sub_menu_action:&0
+    click_action:&0
+    help:""
+    help_limit:*
+  }
+}
+
+proginfo_object {
+  header_flags:
+  version:101
+  object_name:"ProgInfo"
+  proginfo_flags:proginfo_GENERATE_ABOUT_TO_BE_SHOWN | proginfo_INCLUDE_WEB_PAGE_BUTTON | proginfo_GENERATE_WEB_PAGE_CLICKED
+  title:"CLFiler"
+  title_limit:200
+  purpose:"Modern Filer"
+  author:"RISCOS Cloverleaf (C) 2023"
+  licence_type:None
+  prog_version:"0.01 (01-Jan-2000)"
+  alternative_window_name:""
+  visit_url:"https://www.riscoscloverleaf.com/"
+  visit_url_event:&0
+}
+
+window_object {
+  header_flags:
+  version:102
+  object_name:"WRename"
+  window_flags:window_GENERATE_ABOUT_TO_BE_SHOWN | window_AUTO_OPEN | window_AUTO_CLOSE | window_GENERATE_DIALOGUE_COMPLETED
+  help_message:""
+  help_limit:*
+  sprite_name:""
+  pointer_limit:0
+  hotspot:0,0
+  menu_name:""
+  default_focus:&0
+  show_action:&0
+  hide_action:&0
+  toolbar_ibl:""
+  toolbar_itl:""
+  toolbar_ebl:""
+  toolbar_etl:""
+  window.visible:720,1256,1632,1324
+  window.xscroll:0
+  window.yscroll:0
+  window.next:wimp_TOP
+  window.flags:wimp_WINDOW_MOVEABLE | wimp_WINDOW_AUTO_REDRAW | wimp_WINDOW_CLOSE_ICON | wimp_WINDOW_TITLE_ICON | wimp_WINDOW_SIZE_ICON | wimp_WINDOW_NEW_FORMAT
+  window.title_fg:wimp_COLOUR_BLACK
+  window.title_bg:wimp_COLOUR_LIGHT_GREY
+  window.work_fg:wimp_COLOUR_BLACK
+  window.work_bg:wimp_COLOUR_VERY_LIGHT_GREY
+  window.scroll_outer:wimp_COLOUR_MID_LIGHT_GREY
+  window.scroll_inner:wimp_COLOUR_VERY_LIGHT_GREY
+  window.highlight_bg:wimp_COLOUR_CREAM
+  window.extra_flags:
+  window.extent:0,-68,1692,0
+  window.title_flags:wimp_ICON_TEXT | wimp_ICON_HCENTRED | wimp_ICON_VCENTRED | wimp_ICON_INDIRECTED
+  window.work_flags:
+  window.sprite_area:&ffffffff
+  window.xmin:692
+  window.ymin:68
+  window.title_text:"Rename"
+  window.title_text_limit:255
+  window.title_valid:""
+  writablefield_object {
+    cmp:&0
+    bbox:8,-60,592,-8
+    help_message:"New name"
+    help_limit:*
+    flags:writablefield_GENERATE_USER_VALUE_CHANGED
+    text:"Writable"
+    text_limit:255
+    allowable:""
+    allowable_limit:*
+    prev:toolbox_NULL_COMPONENT
+    next:toolbox_NULL_COMPONENT
+  }
+  actionbutton_object {
+    cmp:&1
+    bbox:608,-68,696,0
+    help_message:""
+    help_limit:*
+    flags:actionbutton_IS_DEFAULT
+    text:"OK"
+    text_limit:*
+    click_show:""
+    action:&0
+  }
+  actionbutton_object {
+    cmp:&2
+    bbox:712,-60,900,-8
+    help_message:""
+    help_limit:*
+    flags:actionbutton_IS_CANCEL
+    text:"Cancel"
+    text_limit:*
+    click_show:""
+    action:&0
+  }
+}
+
+window_object {
+  header_flags:toolbox_OBJECT_SHARED
+  version:102
+  object_name:"WFileType"
+  window_flags:window_GENERATE_ABOUT_TO_BE_SHOWN | window_AUTO_OPEN | window_AUTO_CLOSE | window_GENERATE_DIALOGUE_COMPLETED
+  help_message:""
+  help_limit:*
+  sprite_name:""
+  pointer_limit:0
+  hotspot:0,0
+  menu_name:""
+  default_focus:&2
+  show_action:&0
+  hide_action:&0
+  toolbar_ibl:""
+  toolbar_itl:""
+  toolbar_ebl:""
+  toolbar_etl:""
+  window.visible:720,1256,1636,1324
+  window.xscroll:0
+  window.yscroll:0
+  window.next:wimp_TOP
+  window.flags:wimp_WINDOW_MOVEABLE | wimp_WINDOW_AUTO_REDRAW | wimp_WINDOW_CLOSE_ICON | wimp_WINDOW_TITLE_ICON | wimp_WINDOW_SIZE_ICON | wimp_WINDOW_NEW_FORMAT
+  window.title_fg:wimp_COLOUR_BLACK
+  window.title_bg:wimp_COLOUR_LIGHT_GREY
+  window.work_fg:wimp_COLOUR_BLACK
+  window.work_bg:wimp_COLOUR_VERY_LIGHT_GREY
+  window.scroll_outer:wimp_COLOUR_MID_LIGHT_GREY
+  window.scroll_inner:wimp_COLOUR_VERY_LIGHT_GREY
+  window.highlight_bg:wimp_COLOUR_CREAM
+  window.extra_flags:
+  window.extent:0,-68,1500,0
+  window.title_flags:wimp_ICON_TEXT | wimp_ICON_HCENTRED | wimp_ICON_VCENTRED | wimp_ICON_INDIRECTED
+  window.work_flags:
+  window.sprite_area:&ffffffff
+  window.xmin:692
+  window.ymin:68
+  window.title_text:"Set file type"
+  window.title_text_limit:255
+  window.title_valid:""
+  actionbutton_object {
+    cmp:&1
+    bbox:612,-68,700,0
+    help_message:""
+    help_limit:*
+    flags:actionbutton_IS_DEFAULT
+    text:"OK"
+    text_limit:*
+    click_show:""
+    action:&0
+  }
+  stringset_object {
+    cmp:&2
+    bbox:12,-60,588,-8
+    help_message:""
+    help_limit:*
+    flags:stringset_WRITABLE
+    string_set:""
+    title:"File type"
+    initial_selected_string:""
+    selected_string_limit:200
+    allowable:""
+    allowable_limit:*
+    prev:toolbox_NULL_COMPONENT
+    next:toolbox_NULL_COMPONENT
+  }
+  actionbutton_object {
+    cmp:&3
+    bbox:716,-60,904,-8
+    help_message:""
+    help_limit:*
+    flags:actionbutton_IS_CANCEL
+    text:"Cancel"
+    text_limit:*
+    click_show:""
+    action:&0
+  }
+}
+
+window_object {
+  header_flags:
+  version:102
+  object_name:"WInplace"
+  window_flags:window_GENERATE_ABOUT_TO_BE_SHOWN | window_AUTO_OPEN | window_GENERATE_DIALOGUE_COMPLETED
+  help_message:""
+  help_limit:*
+  sprite_name:""
+  pointer_limit:0
+  hotspot:0,0
+  menu_name:""
+  default_focus:toolbox_NULL_COMPONENT
+  show_action:&0
+  hide_action:&0
+  toolbar_ibl:""
+  toolbar_itl:""
+  toolbar_ebl:""
+  toolbar_etl:""
+  window.visible:32,840,724,1264
+  window.xscroll:0
+  window.yscroll:0
+  window.next:wimp_TOP
+  window.flags:wimp_WINDOW_MOVEABLE | wimp_WINDOW_AUTO_REDRAW | wimp_WINDOW_SIZE_ICON | wimp_WINDOW_NEW_FORMAT
+  window.title_fg:wimp_COLOUR_BLACK
+  window.title_bg:wimp_COLOUR_LIGHT_GREY
+  window.work_fg:wimp_COLOUR_BLACK
+  window.work_bg:wimp_COLOUR_VERY_LIGHT_GREY
+  window.scroll_outer:wimp_COLOUR_MID_LIGHT_GREY
+  window.scroll_inner:wimp_COLOUR_VERY_LIGHT_GREY
+  window.highlight_bg:wimp_COLOUR_CREAM
+  window.extra_flags:
+  window.extent:0,-1024,1280,0
+  window.title_flags:wimp_ICON_TEXT | wimp_ICON_HCENTRED | wimp_ICON_VCENTRED | wimp_ICON_INDIRECTED
+  window.work_flags:
+  window.sprite_area:&ffffffff
+  window.xmin:12
+  window.ymin:12
+  window.title_text:""
+  window.title_text_limit:*
+  window.title_valid:""
+  writablefield_object {
+    cmp:&0
+    bbox:16,-60,204,-8
+    help_message:""
+    help_limit:*
+    flags:
+    text:"Writable"
+    text_limit:250
+    allowable:""
+    allowable_limit:*
+    prev:toolbox_NULL_COMPONENT
+    next:toolbox_NULL_COMPONENT
+  }
+}
+
+colourmenu_object {
+  header_flags:
+  version:100
+  object_name:"MDirColor"
+  colourmenu_flags:colourmenu_GENERATE_ABOUT_TO_BE_SHOWN | colourmenu_NONE_ENTRY
+  title:"Directory background color"
+  title_limit:*
+  colour:colourmenu_NONE
+}
+
+window_object {
+  header_flags:
+  version:102
+  object_name:"WCreateDir"
+  window_flags:window_GENERATE_ABOUT_TO_BE_SHOWN | window_AUTO_OPEN | window_AUTO_CLOSE | window_GENERATE_DIALOGUE_COMPLETED
+  help_message:""
+  help_limit:*
+  sprite_name:""
+  pointer_limit:0
+  hotspot:0,0
+  menu_name:""
+  default_focus:&0
+  show_action:&0
+  hide_action:&0
+  toolbar_ibl:""
+  toolbar_itl:""
+  toolbar_ebl:""
+  toolbar_etl:""
+  window.visible:720,1256,1632,1324
+  window.xscroll:0
+  window.yscroll:0
+  window.next:wimp_TOP
+  window.flags:wimp_WINDOW_MOVEABLE | wimp_WINDOW_AUTO_REDRAW | wimp_WINDOW_CLOSE_ICON | wimp_WINDOW_TITLE_ICON | wimp_WINDOW_SIZE_ICON | wimp_WINDOW_NEW_FORMAT
+  window.title_fg:wimp_COLOUR_BLACK
+  window.title_bg:wimp_COLOUR_LIGHT_GREY
+  window.work_fg:wimp_COLOUR_BLACK
+  window.work_bg:wimp_COLOUR_VERY_LIGHT_GREY
+  window.scroll_outer:wimp_COLOUR_MID_LIGHT_GREY
+  window.scroll_inner:wimp_COLOUR_VERY_LIGHT_GREY
+  window.highlight_bg:wimp_COLOUR_CREAM
+  window.extra_flags:
+  window.extent:0,-68,1692,0
+  window.title_flags:wimp_ICON_TEXT | wimp_ICON_HCENTRED | wimp_ICON_VCENTRED | wimp_ICON_INDIRECTED
+  window.work_flags:
+  window.sprite_area:&ffffffff
+  window.xmin:692
+  window.ymin:68
+  window.title_text:"Create directory"
+  window.title_text_limit:255
+  window.title_valid:""
+  writablefield_object {
+    cmp:&0
+    bbox:8,-60,592,-8
+    help_message:""
+    help_limit:*
+    flags:writablefield_GENERATE_USER_VALUE_CHANGED
+    text:"Writable"
+    text_limit:255
+    allowable:""
+    allowable_limit:*
+    prev:toolbox_NULL_COMPONENT
+    next:toolbox_NULL_COMPONENT
+  }
+  actionbutton_object {
+    cmp:&1
+    bbox:608,-68,696,0
+    help_message:""
+    help_limit:*
+    flags:actionbutton_IS_DEFAULT
+    text:"OK"
+    text_limit:*
+    click_show:""
+    action:&0
+  }
+  actionbutton_object {
+    cmp:&2
+    bbox:712,-60,900,-8
+    help_message:""
+    help_limit:*
+    flags:actionbutton_IS_CANCEL
+    text:"Cancel"
+    text_limit:*
+    click_show:""
+    action:&0
+  }
+}
+
+menu_object {
+  header_flags:
+  version:102
+  object_name:"MSelection"
+  menu_flags:menu_GENERATE_ABOUT_TO_BE_SHOWN
+  title:"Selection"
+  title_limit:200
+  help:""
+  help_limit:*
+  show_action:&0
+  hide_action:
+  Entry {
+    cmp:3
+    flags:
+    cmp:&3
+    text:"Copy                ^C"
+    text_limit:32
+    click_object_name:""
+    sub_menu_object_name:""
+    sub_menu_action:&0
+    click_action:&0
+    help:""
+    help_limit:*
+  }
+  Entry {
+    cmp:13
+    flags:menu_ENTRY_IS_MENU
+    cmp:&d
+    text:"Copy as..."
+    text_limit:*
+    click_object_name:"WCopyAs"
+    sub_menu_object_name:"WCopyAs"
+    sub_menu_action:&0
+    click_action:&0
+    help:""
+    help_limit:*
+  }
+  Entry {
+    cmp:4
+    flags:
+    cmp:&4
+    text:"Cut                 ^X"
+    text_limit:32
+    click_object_name:""
+    sub_menu_object_name:""
+    sub_menu_action:&0
+    click_action:&0
+    help:""
+    help_limit:*
+  }
+  Entry {
+    cmp:5
+    flags:menu_ENTRY_GENERATE_SUB_MENU_ACTION | menu_ENTRY_IS_MENU | 0x4000
+    cmp:&5
+    text:"Rename...           ^R"
+    text_limit:32
+    click_object_name:""
+    sub_menu_object_name:""
+    sub_menu_action:&0
+    click_action:&0
+    help:""
+    help_limit:*
+  }
+  Entry {
+    cmp:6
+    flags:
+    cmp:&6
+    text:"Delete...          Del"
+    text_limit:32
+    click_object_name:""
+    sub_menu_object_name:""
+    sub_menu_action:&0
+    click_action:&0
+    help:""
+    help_limit:*
+  }
+  Entry {
+    cmp:7
+    flags:menu_ENTRY_SUB_MENU | menu_ENTRY_GENERATE_SUB_MENU_ACTION
+    cmp:&7
+    text:"Access"
+    text_limit:*
+    click_object_name:""
+    sub_menu_object_name:"MAccess"
+    sub_menu_action:&0
+    click_action:&0
+    help:""
+    help_limit:*
+  }
+  Entry {
+    cmp:8
+    flags:
+    cmp:&8
+    text:"Count"
+    text_limit:*
+    click_object_name:""
+    sub_menu_object_name:""
+    sub_menu_action:&0
+    click_action:&0
+    help:""
+    help_limit:*
+  }
+  Entry {
+    cmp:9
+    flags:menu_ENTRY_FADED
+    cmp:&9
+    text:"Help"
+    text_limit:*
+    click_object_name:""
+    sub_menu_object_name:""
+    sub_menu_action:&0
+    click_action:&0
+    help:""
+    help_limit:*
+  }
+  Entry {
+    cmp:10
+    flags:
+    cmp:&a
+    text:"Info..."
+    text_limit:*
+    click_object_name:""
+    sub_menu_object_name:""
+    sub_menu_action:&0
+    click_action:&0
+    help:""
+    help_limit:*
+  }
+  Entry {
+    cmp:11
+    flags:0x4000
+    cmp:&b
+    text:"Set type...         ^S"
+    text_limit:*
+    click_object_name:"WFileType"
+    sub_menu_object_name:""
+    sub_menu_action:&0
+    click_action:&0
+    help:""
+    help_limit:*
+  }
+  Entry {
+    cmp:15
+    flags:
+    cmp:&f
+    text:"Set type auto  Shift-S"
+    text_limit:*
+    click_object_name:""
+    sub_menu_object_name:""
+    sub_menu_action:&0
+    click_action:&0
+    help:""
+    help_limit:*
+  }
+  Entry {
+    cmp:12
+    flags:menu_ENTRY_SEPARATE | menu_ENTRY_FADED
+    cmp:&c
+    text:"Stamp               ^O"
+    text_limit:*
+    click_object_name:""
+    sub_menu_object_name:""
+    sub_menu_action:&0
+    click_action:&0
+    help:""
+    help_limit:*
+  }
+  Entry {
+    cmp:14
+    flags:menu_ENTRY_FADED
+    cmp:&e
+    text:"View image          ^I"
+    text_limit:*
+    click_object_name:""
+    sub_menu_object_name:""
+    sub_menu_action:&0
+    click_action:&0
+    help:""
+    help_limit:*
+  }
+}
+
+window_object {
+  header_flags:
+  version:102
+  object_name:"WCopyMove"
+  window_flags:window_GENERATE_ABOUT_TO_BE_SHOWN | window_AUTO_OPEN | window_AUTO_CLOSE | window_GENERATE_DIALOGUE_COMPLETED
+  help_message:""
+  help_limit:*
+  sprite_name:""
+  pointer_limit:0
+  hotspot:0,0
+  menu_name:""
+  default_focus:toolbox_WINDOW_FOCUS
+  show_action:&0
+  hide_action:&0
+  toolbar_ibl:""
+  toolbar_itl:""
+  toolbar_ebl:""
+  toolbar_etl:""
+  window.visible:32,1040,1084,1264
+  window.xscroll:0
+  window.yscroll:0
+  window.next:wimp_TOP
+  window.flags:wimp_WINDOW_MOVEABLE | wimp_WINDOW_AUTO_REDRAW | wimp_WINDOW_CLOSE_ICON | wimp_WINDOW_TITLE_ICON | wimp_WINDOW_SIZE_ICON | wimp_WINDOW_NEW_FORMAT
+  window.title_fg:wimp_COLOUR_BLACK
+  window.title_bg:wimp_COLOUR_LIGHT_GREY
+  window.work_fg:wimp_COLOUR_BLACK
+  window.work_bg:wimp_COLOUR_VERY_LIGHT_GREY
+  window.scroll_outer:wimp_COLOUR_MID_LIGHT_GREY
+  window.scroll_inner:wimp_COLOUR_VERY_LIGHT_GREY
+  window.highlight_bg:wimp_COLOUR_CREAM
+  window.extra_flags:
+  window.extent:0,-1024,1280,0
+  window.title_flags:wimp_ICON_TEXT | wimp_ICON_HCENTRED | wimp_ICON_VCENTRED | wimp_ICON_INDIRECTED
+  window.work_flags:
+  window.sprite_area:&ffffffff
+  window.xmin:100
+  window.ymin:100
+  window.title_text:"Copy or move?"
+  window.title_text_limit:300
+  window.title_valid:""
+  label_object {
+    cmp:&0
+    bbox:192,-72,820,-20
+    help_message:""
+    help_limit:*
+    flags:label_NO_BOX
+    label:"Copy or move selected item(s) to"
+  }
+  button_object {
+    cmp:&1
+    bbox:64,-116,180,-12
+    help_message:""
+    help_limit:*
+    flags:
+    button_flags:wimp_ICON_SPRITE | wimp_ICON_HCENTRED | wimp_ICON_VCENTRED | wimp_ICON_INDIRECTED
+    button_esg:0
+    button_fg:wimp_COLOUR_BLACK
+    button_bg:wimp_COLOUR_WHITE
+    value:"question"
+    value_limit:*
+    validation:""
+    validation_limit:*
+  }
+  actionbutton_object {
+    cmp:&2
+    bbox:72,-192,260,-140
+    help_message:""
+    help_limit:*
+    flags:actionbutton_IS_CANCEL
+    text:"Cancel"
+    text_limit:*
+    click_show:""
+    action:&0
+  }
+  actionbutton_object {
+    cmp:&3
+    bbox:776,-200,980,-132
+    help_message:""
+    help_limit:*
+    flags:actionbutton_IS_DEFAULT
+    text:"(C)opy"
+    text_limit:*
+    click_show:""
+    action:&0
+  }
+  actionbutton_object {
+    cmp:&4
+    bbox:424,-192,612,-140
+    help_message:""
+    help_limit:*
+    flags:
+    text:"(M)ove"
+    text_limit:*
+    click_show:""
+    action:&0
+  }
+  button_object {
+    cmp:&5
+    bbox:192,-112,1036,-68
+    help_message:""
+    help_limit:*
+    flags:
+    button_flags:wimp_ICON_TEXT | wimp_ICON_VCENTRED | wimp_ICON_INDIRECTED
+    button_esg:0
+    button_fg:wimp_COLOUR_BLACK
+    button_bg:wimp_COLOUR_WHITE
+    value:"dst"
+    value_limit:240
+    validation:""
+    validation_limit:*
+  }
+}
+
+window_object {
+  header_flags:
+  version:102
+  object_name:"WSplash"
+  window_flags:window_GENERATE_ABOUT_TO_BE_SHOWN | window_AUTO_OPEN | window_AUTO_CLOSE | window_GENERATE_DIALOGUE_COMPLETED
+  help_message:""
+  help_limit:*
+  sprite_name:""
+  pointer_limit:0
+  hotspot:0,0
+  menu_name:""
+  default_focus:toolbox_NULL_COMPONENT
+  show_action:&0
+  hide_action:&0
+  toolbar_ibl:""
+  toolbar_itl:""
+  toolbar_ebl:""
+  toolbar_etl:""
+  window.visible:736,452,1432,816
+  window.xscroll:0
+  window.yscroll:0
+  window.next:wimp_TOP
+  window.flags:wimp_WINDOW_MOVEABLE | wimp_WINDOW_AUTO_REDRAW | wimp_WINDOW_CLOSE_ICON | wimp_WINDOW_TITLE_ICON | wimp_WINDOW_SIZE_ICON | wimp_WINDOW_NEW_FORMAT
+  window.title_fg:wimp_COLOUR_BLACK
+  window.title_bg:wimp_COLOUR_LIGHT_GREY
+  window.work_fg:wimp_COLOUR_BLACK
+  window.work_bg:wimp_COLOUR_VERY_LIGHT_GREY
+  window.scroll_outer:wimp_COLOUR_MID_LIGHT_GREY
+  window.scroll_inner:wimp_COLOUR_VERY_LIGHT_GREY
+  window.highlight_bg:wimp_COLOUR_CREAM
+  window.extra_flags:
+  window.extent:0,-1024,1280,0
+  window.title_flags:wimp_ICON_TEXT | wimp_ICON_HCENTRED | wimp_ICON_VCENTRED | wimp_ICON_INDIRECTED
+  window.work_flags:
+  window.sprite_area:&ffffffff
+  window.xmin:100
+  window.ymin:100
+  window.title_text:"CLFiler"
+  window.title_text_limit:*
+  window.title_valid:""
+  button_object {
+    cmp:&0
+    bbox:16,-120,132,-16
+    help_message:""
+    help_limit:*
+    flags:button_TASK_SPRITE_AREA
+    button_flags:wimp_ICON_SPRITE | wimp_ICON_HCENTRED | wimp_ICON_VCENTRED | wimp_ICON_INDIRECTED
+    button_esg:0
+    button_fg:wimp_COLOUR_BLACK
+    button_bg:wimp_COLOUR_WHITE
+    value:"!clfiler"
+    value_limit:*
+    validation:""
+    validation_limit:*
+  }
+  button_object {
+    cmp:&1
+    bbox:144,-76,692,-24
+    help_message:""
+    help_limit:*
+    flags:
+    button_flags:wimp_ICON_TEXT | wimp_ICON_VCENTRED | wimp_ICON_INDIRECTED
+    button_esg:0
+    button_fg:wimp_COLOUR_BLACK
+    button_bg:wimp_COLOUR_WHITE
+    value:"CLFiler v.01"
+    value_limit:200
+    validation:""
+    validation_limit:*
+  }
+  label_object {
+    cmp:&2
+    bbox:144,-188,704,-136
+    help_message:""
+    help_limit:*
+    flags:label_NO_BOX
+    label:"part of Cloverleaf RISC OS project"
+  }
+  actionbutton_object {
+    cmp:&3
+    bbox:268,-324,456,-272
+    help_message:""
+    help_limit:*
+    flags:
+    text:"Donate"
+    text_limit:*
+    click_show:""
+    action:&0
+  }
+  label_object {
+    cmp:&4
+    bbox:144,-112,1144,-72
+    help_message:""
+    help_limit:*
+    flags:label_NO_BOX
+    label:"Modern Filer for RISC OS"
+  }
+  button_object {
+    cmp:&5
+    bbox:144,-232,712,-192
+    help_message:""
+    help_limit:*
+    flags:
+    button_flags:wimp_ICON_TEXT | wimp_ICON_VCENTRED | wimp_ICON_INDIRECTED | wimp_BUTTON_CLICK
+    button_esg:0
+    button_fg:wimp_COLOUR_DARK_BLUE
+    button_bg:wimp_COLOUR_WHITE
+    value:"www.riscoscloverleaf.com"
+    value_limit:*
+    validation:""
+    validation_limit:*
+  }
+}
+
+menu_object {
+  header_flags:
+  version:102
+  object_name:"MDisplay"
+  menu_flags:menu_GENERATE_ABOUT_TO_BE_SHOWN
+  title:"Display"
+  title_limit:*
+  help:""
+  help_limit:*
+  show_action:&0
+  hide_action:
+  Entry {
+    cmp:0
+    flags:menu_ENTRY_SUB_MENU | menu_ENTRY_GENERATE_SUB_MENU_ACTION
+    cmp:&0
+    text:"Folder"
+    text_limit:*
+    click_object_name:""
+    sub_menu_object_name:"MDispFolder"
+    sub_menu_action:&0
+    click_action:&0
+    help:""
+    help_limit:*
+  }
+  Entry {
+    cmp:1
+    flags:
+    cmp:&1
+    text:"Show Top toolbar, Status bar and Treeview  ^T"
+    text_limit:*
+    click_object_name:""
+    sub_menu_object_name:""
+    sub_menu_action:&0
+    click_action:&0
+    help:""
+    help_limit:*
+  }
+  Entry {
+    cmp:2
+    flags:
+    cmp:&2
+    text:"Show Top toolbar and Status bar            ^T"
+    text_limit:*
+    click_object_name:""
+    sub_menu_object_name:""
+    sub_menu_action:&0
+    click_action:&0
+    help:""
+    help_limit:*
+  }
+  Entry {
+    cmp:3
+    flags:
+    cmp:&3
+    text:"Show Top toolbar                           ^T"
+    text_limit:*
+    click_object_name:""
+    sub_menu_object_name:""
+    sub_menu_action:&0
+    click_action:&0
+    help:""
+    help_limit:*
+  }
+  Entry {
+    cmp:4
+    flags:
+    cmp:&4
+    text:"Hide all toolbars                          ^T"
+    text_limit:*
+    click_object_name:""
+    sub_menu_object_name:""
+    sub_menu_action:&0
+    click_action:&0
+    help:""
+    help_limit:*
+  }
+}
+
+menu_object {
+  header_flags:
+  version:102
+  object_name:"MDispFolder"
+  menu_flags:menu_GENERATE_ABOUT_TO_BE_SHOWN
+  title:"Folder"
+  title_limit:*
+  help:""
+  help_limit:*
+  show_action:&0
+  hide_action:
+  Entry {
+    cmp:1
+    flags:
+    cmp:&1
+    text:"Large icons                      F2"
+    text_limit:*
+    click_object_name:""
+    sub_menu_object_name:""
+    sub_menu_action:&0
+    click_action:&0
+    help:""
+    help_limit:*
+  }
+  Entry {
+    cmp:2
+    flags:
+    cmp:&2
+    text:"Small icons                      F3"
+    text_limit:*
+    click_object_name:""
+    sub_menu_object_name:""
+    sub_menu_action:&0
+    click_action:&0
+    help:""
+    help_limit:*
+  }
+  Entry {
+    cmp:3
+    flags:menu_ENTRY_SEPARATE
+    cmp:&3
+    text:"Full info                        F4"
+    text_limit:*
+    click_object_name:""
+    sub_menu_object_name:""
+    sub_menu_action:&0
+    click_action:&0
+    help:""
+    help_limit:*
+  }
+  Entry {
+    cmp:9
+    flags:
+    cmp:&9
+    text:"Thumbnails Large                 F5"
+    text_limit:*
+    click_object_name:""
+    sub_menu_object_name:""
+    sub_menu_action:&0
+    click_action:&0
+    help:""
+    help_limit:*
+  }
+  Entry {
+    cmp:10
+    flags:
+    cmp:&a
+    text:"Thumbnails Medium"
+    text_limit:*
+    click_object_name:""
+    sub_menu_object_name:""
+    sub_menu_action:&0
+    click_action:&0
+    help:""
+    help_limit:*
+  }
+  Entry {
+    cmp:11
+    flags:
+    cmp:&b
+    text:"Thumbnails Small"
+    text_limit:*
+    click_object_name:""
+    sub_menu_object_name:""
+    sub_menu_action:&0
+    click_action:&0
+    help:""
+    help_limit:*
+  }
+  Entry {
+    cmp:12
+    flags:menu_ENTRY_SEPARATE
+    cmp:&c
+    text:"Thumbnails Tiny"
+    text_limit:*
+    click_object_name:""
+    sub_menu_object_name:""
+    sub_menu_action:&0
+    click_action:&0
+    help:""
+    help_limit:*
+  }
+  Entry {
+    cmp:4
+    flags:
+    cmp:&4
+    text:"2D size bars"
+    text_limit:*
+    click_object_name:""
+    sub_menu_object_name:""
+    sub_menu_action:&0
+    click_action:&0
+    help:""
+    help_limit:*
+  }
+  Entry {
+    cmp:6
+    flags:menu_ENTRY_SEPARATE
+    cmp:&6
+    text:"Treemap"
+    text_limit:*
+    click_object_name:""
+    sub_menu_object_name:""
+    sub_menu_action:&0
+    click_action:&0
+    help:""
+    help_limit:*
+  }
+  Entry {
+    cmp:32
+    flags:
+    cmp:&20
+    text:"Sort by name"
+    text_limit:*
+    click_object_name:""
+    sub_menu_object_name:""
+    sub_menu_action:&0
+    click_action:&0
+    help:""
+    help_limit:*
+  }
+  Entry {
+    cmp:33
+    flags:
+    cmp:&21
+    text:"Sort by name with directories first"
+    text_limit:*
+    click_object_name:""
+    sub_menu_object_name:""
+    sub_menu_action:&0
+    click_action:&0
+    help:""
+    help_limit:*
+  }
+  Entry {
+    cmp:34
+    flags:
+    cmp:&22
+    text:"Sort by date"
+    text_limit:*
+    click_object_name:""
+    sub_menu_object_name:""
+    sub_menu_action:&0
+    click_action:&0
+    help:""
+    help_limit:*
+  }
+  Entry {
+    cmp:35
+    flags:menu_ENTRY_SEPARATE
+    cmp:&23
+    text:"Sort by size"
+    text_limit:*
+    click_object_name:""
+    sub_menu_object_name:""
+    sub_menu_action:&0
+    click_action:&0
+    help:""
+    help_limit:*
+  }
+  Entry {
+    cmp:48
+    flags:
+    cmp:&30
+    text:"Reverse sort"
+    text_limit:*
+    click_object_name:""
+    sub_menu_object_name:""
+    sub_menu_action:&0
+    click_action:&0
+    help:""
+    help_limit:*
+  }
+}
+
+colourdbox_object {
+  header_flags:
+  version:100
+  object_name:"DDirColor"
+  colourdbox_flags:colourdbox_GENERATE_ABOUT_TO_BE_SHOWN | colourdbox_GENERATE_DIALOGUE_COMPLETED | colourdbox_INCLUDE_NONE_BUTTON
+  title:"Directory background color"
+  title_limit:*
+  colour:os_COLOUR_BLACK
+}
+
+menu_object {
+  header_flags:
+  version:102
+  object_name:"MTreeView"
+  menu_flags:menu_GENERATE_ABOUT_TO_BE_SHOWN | menu_GENERATE_DIALOGUE_COMPLETED
+  title:"Selection"
+  title_limit:200
+  help:""
+  help_limit:*
+  show_action:&0
+  hide_action:&0
+  Entry {
+    cmp:2
+    flags:
+    cmp:&2
+    text:"New window    ^N"
+    text_limit:23
+    click_object_name:""
+    sub_menu_object_name:""
+    sub_menu_action:&0
+    click_action:&0
+    help:""
+    help_limit:*
+  }
+  Entry {
+    cmp:15
+    flags:menu_ENTRY_SEPARATE | menu_ENTRY_IS_MENU | 0x4000
+    cmp:&f
+    text:"New directory..."
+    text_limit:*
+    click_object_name:"WCreateDir"
+    sub_menu_object_name:""
+    sub_menu_action:&0
+    click_action:&0
+    help:""
+    help_limit:*
+  }
+  Entry {
+    cmp:3
+    flags:
+    cmp:&3
+    text:"Copy          ^C"
+    text_limit:32
+    click_object_name:""
+    sub_menu_object_name:""
+    sub_menu_action:&0
+    click_action:&0
+    help:""
+    help_limit:*
+  }
+  Entry {
+    cmp:13
+    flags:menu_ENTRY_IS_MENU | 0x4000
+    cmp:&d
+    text:"Copy as..."
+    text_limit:*
+    click_object_name:"WCopyAs"
+    sub_menu_object_name:"WCopyAs"
+    sub_menu_action:&0
+    click_action:&0
+    help:""
+    help_limit:*
+  }
+  Entry {
+    cmp:4
+    flags:
+    cmp:&4
+    text:"Cut           ^X"
+    text_limit:32
+    click_object_name:""
+    sub_menu_object_name:""
+    sub_menu_action:&0
+    click_action:&0
+    help:""
+    help_limit:*
+  }
+  Entry {
+    cmp:5
+    flags:menu_ENTRY_GENERATE_SUB_MENU_ACTION | menu_ENTRY_IS_MENU | 0x4000
+    cmp:&5
+    text:"Rename...     ^R"
+    text_limit:32
+    click_object_name:"WRename"
+    sub_menu_object_name:"WRename"
+    sub_menu_action:&0
+    click_action:&0
+    help:""
+    help_limit:*
+  }
+  Entry {
+    cmp:6
+    flags:
+    cmp:&6
+    text:"Delete...    Del"
+    text_limit:32
+    click_object_name:""
+    sub_menu_object_name:""
+    sub_menu_action:&0
+    click_action:&0
+    help:""
+    help_limit:*
+  }
+  Entry {
+    cmp:7
+    flags:menu_ENTRY_SUB_MENU
+    cmp:&7
+    text:"Access"
+    text_limit:*
+    click_object_name:""
+    sub_menu_object_name:"MAccess"
+    sub_menu_action:&0
+    click_action:&0
+    help:""
+    help_limit:*
+  }
+  Entry {
+    cmp:8
+    flags:
+    cmp:&8
+    text:"Count"
+    text_limit:*
+    click_object_name:""
+    sub_menu_object_name:""
+    sub_menu_action:&0
+    click_action:&0
+    help:""
+    help_limit:*
+  }
+  Entry {
+    cmp:9
+    flags:menu_ENTRY_FADED
+    cmp:&9
+    text:"Help"
+    text_limit:*
+    click_object_name:""
+    sub_menu_object_name:""
+    sub_menu_action:&0
+    click_action:&0
+    help:""
+    help_limit:*
+  }
+  Entry {
+    cmp:12
+    flags:menu_ENTRY_SEPARATE | menu_ENTRY_FADED
+    cmp:&c
+    text:"Stamp         ^O"
+    text_limit:*
+    click_object_name:""
+    sub_menu_object_name:""
+    sub_menu_action:&0
+    click_action:&0
+    help:""
+    help_limit:*
+  }
+  Entry {
+    cmp:14
+    flags:menu_ENTRY_FADED
+    cmp:&e
+    text:"Set directory"
+    text_limit:19
+    click_object_name:""
+    sub_menu_object_name:""
+    sub_menu_action:&0
+    click_action:&0
+    help:""
+    help_limit:*
+  }
+}
+
+window_object {
+  header_flags:toolbox_OBJECT_SHARED
+  version:102
+  object_name:"WCopyAs"
+  window_flags:window_GENERATE_ABOUT_TO_BE_SHOWN | window_AUTO_OPEN | window_AUTO_CLOSE | window_GENERATE_DIALOGUE_COMPLETED
+  help_message:""
+  help_limit:*
+  sprite_name:""
+  pointer_limit:0
+  hotspot:0,0
+  menu_name:""
+  default_focus:&0
+  show_action:&0
+  hide_action:&0
+  toolbar_ibl:""
+  toolbar_itl:""
+  toolbar_ebl:""
+  toolbar_etl:""
+  window.visible:1036,852,1696,1020
+  window.xscroll:0
+  window.yscroll:0
+  window.next:wimp_TOP
+  window.flags:wimp_WINDOW_MOVEABLE | wimp_WINDOW_AUTO_REDRAW | wimp_WINDOW_CLOSE_ICON | wimp_WINDOW_TITLE_ICON | wimp_WINDOW_SIZE_ICON | wimp_WINDOW_NEW_FORMAT
+  window.title_fg:wimp_COLOUR_BLACK
+  window.title_bg:wimp_COLOUR_LIGHT_GREY
+  window.work_fg:wimp_COLOUR_BLACK
+  window.work_bg:wimp_COLOUR_VERY_LIGHT_GREY
+  window.scroll_outer:wimp_COLOUR_MID_LIGHT_GREY
+  window.scroll_inner:wimp_COLOUR_VERY_LIGHT_GREY
+  window.highlight_bg:wimp_COLOUR_CREAM
+  window.extra_flags:
+  window.extent:0,-168,1000,0
+  window.title_flags:wimp_ICON_TEXT | wimp_ICON_HCENTRED | wimp_ICON_VCENTRED | wimp_ICON_INDIRECTED
+  window.work_flags:
+  window.sprite_area:&ffffffff
+  window.xmin:448
+  window.ymin:168
+  window.title_text:"Copy as"
+  window.title_text_limit:255
+  window.title_valid:""
+  writablefield_object {
+    cmp:&0
+    bbox:12,-152,332,-100
+    help_message:""
+    help_limit:*
+    flags:writablefield_GENERATE_USER_VALUE_CHANGED
+    text:"Writable"
+    text_limit:255
+    allowable:""
+    allowable_limit:*
+    prev:toolbox_NULL_COMPONENT
+    next:toolbox_NULL_COMPONENT
+  }
+  actionbutton_object {
+    cmp:&1
+    bbox:344,-160,436,-96
+    help_message:""
+    help_limit:*
+    flags:actionbutton_IS_DEFAULT
+    text:"OK"
+    text_limit:*
+    click_show:""
+    action:&0
+  }
+  button_object {
+    cmp:&3
+    bbox:316,-88,392,-4
+    help_message:""
+    help_limit:*
+    flags:
+    button_flags:wimp_ICON_SPRITE | wimp_ICON_HCENTRED | wimp_ICON_VCENTRED | wimp_ICON_INDIRECTED
+    button_esg:0
+    button_fg:wimp_COLOUR_BLACK
+    button_bg:wimp_COLOUR_WHITE
+    value:"file_xxx"
+    value_limit:20
+    validation:""
+    validation_limit:*
+  }
+  actionbutton_object {
+    cmp:&4
+    bbox:452,-152,640,-100
+    help_message:""
+    help_limit:*
+    flags:actionbutton_IS_CANCEL
+    text:"Cancel"
+    text_limit:*
+    click_show:""
+    action:&0
+  }
+}
+
+window_object {
+  header_flags:
+  version:102
+  object_name:"WSizeScan"
+  window_flags:window_GENERATE_ABOUT_TO_BE_SHOWN | window_AUTO_OPEN | window_AUTO_CLOSE | window_GENERATE_DIALOGUE_COMPLETED
+  help_message:""
+  help_limit:*
+  sprite_name:""
+  pointer_limit:0
+  hotspot:0,0
+  menu_name:""
+  default_focus:toolbox_NULL_COMPONENT
+  show_action:&0
+  hide_action:&0
+  toolbar_ibl:""
+  toolbar_itl:""
+  toolbar_ebl:""
+  toolbar_etl:""
+  window.visible:760,1096,1460,1352
+  window.xscroll:0
+  window.yscroll:0
+  window.next:wimp_TOP
+  window.flags:wimp_WINDOW_MOVEABLE | wimp_WINDOW_AUTO_REDRAW | wimp_WINDOW_BACK_ICON | wimp_WINDOW_TITLE_ICON | wimp_WINDOW_SIZE_ICON | wimp_WINDOW_NEW_FORMAT
+  window.title_fg:wimp_COLOUR_BLACK
+  window.title_bg:wimp_COLOUR_LIGHT_GREY
+  window.work_fg:wimp_COLOUR_BLACK
+  window.work_bg:wimp_COLOUR_VERY_LIGHT_GREY
+  window.scroll_outer:wimp_COLOUR_MID_LIGHT_GREY
+  window.scroll_inner:wimp_COLOUR_VERY_LIGHT_GREY
+  window.highlight_bg:wimp_COLOUR_CREAM
+  window.extra_flags:
+  window.extent:0,-256,700,0
+  window.title_flags:wimp_ICON_TEXT | wimp_ICON_HCENTRED | wimp_ICON_VCENTRED | wimp_ICON_INDIRECTED
+  window.work_flags:
+  window.sprite_area:&ffffffff
+  window.xmin:100
+  window.ymin:100
+  window.title_text:"Scanning"
+  window.title_text_limit:*
+  window.title_valid:""
+  button_object {
+    cmp:&0
+    bbox:20,-100,680,-56
+    help_message:""
+    help_limit:*
+    flags:
+    button_flags:wimp_ICON_TEXT | wimp_ICON_VCENTRED | wimp_ICON_INDIRECTED
+    button_esg:0
+    button_fg:wimp_COLOUR_BLACK
+    button_bg:wimp_COLOUR_WHITE
+    value:"Dir..."
+    value_limit:200
+    validation:""
+    validation_limit:*
+  }
+  button_object {
+    cmp:&1
+    bbox:20,-56,680,-12
+    help_message:""
+    help_limit:*
+    flags:
+    button_flags:wimp_ICON_TEXT | wimp_ICON_VCENTRED | wimp_ICON_INDIRECTED
+    button_esg:0
+    button_fg:wimp_COLOUR_BLACK
+    button_bg:wimp_COLOUR_WHITE
+    value:"Scanning:"
+    value_limit:*
+    validation:""
+    validation_limit:*
+  }
+  button_object {
+    cmp:&2
+    bbox:32,-148,668,-104
+    help_message:""
+    help_limit:*
+    flags:
+    button_flags:wimp_ICON_TEXT | wimp_ICON_HCENTRED | wimp_ICON_VCENTRED | wimp_ICON_INDIRECTED
+    button_esg:0
+    button_fg:wimp_COLOUR_BLACK
+    button_bg:wimp_COLOUR_WHITE
+    value:"Total"
+    value_limit:200
+    validation:""
+    validation_limit:*
+  }
+  actionbutton_object {
+    cmp:&4
+    bbox:252,-232,456,-164
+    help_message:""
+    help_limit:*
+    flags:actionbutton_IS_DEFAULT | actionbutton_IS_CANCEL
+    text:"Abort"
+    text_limit:*
+    click_show:""
+    action:&0
+  }
+}
+
+menu_object {
+  header_flags:
+  version:102
+  object_name:"MViewMode"
+  menu_flags:menu_GENERATE_ABOUT_TO_BE_SHOWN
+  title:"View mode"
+  title_limit:*
+  help:""
+  help_limit:*
+  show_action:&0
+  hide_action:
+  Entry {
+    cmp:0
+    flags:
+    cmp:&0
+    text:"Large icons       F2"
+    text_limit:*
+    click_object_name:""
+    sub_menu_object_name:""
+    sub_menu_action:&0
+    click_action:&0
+    help:""
+    help_limit:*
+  }
+  Entry {
+    cmp:1
+    flags:
+    cmp:&1
+    text:"Small icons       F3"
+    text_limit:*
+    click_object_name:""
+    sub_menu_object_name:""
+    sub_menu_action:&0
+    click_action:&0
+    help:""
+    help_limit:*
+  }
+  Entry {
+    cmp:2
+    flags:menu_ENTRY_SEPARATE
+    cmp:&2
+    text:"Full info         F4"
+    text_limit:*
+    click_object_name:""
+    sub_menu_object_name:""
+    sub_menu_action:&0
+    click_action:&0
+    help:""
+    help_limit:*
+  }
+  Entry {
+    cmp:9
+    flags:
+    cmp:&9
+    text:"Thumbnails Large  F5"
+    text_limit:*
+    click_object_name:""
+    sub_menu_object_name:""
+    sub_menu_action:&0
+    click_action:&0
+    help:""
+    help_limit:*
+  }
+  Entry {
+    cmp:10
+    flags:
+    cmp:&a
+    text:"Thumbnails Medium"
+    text_limit:*
+    click_object_name:""
+    sub_menu_object_name:""
+    sub_menu_action:&0
+    click_action:&0
+    help:""
+    help_limit:*
+  }
+  Entry {
+    cmp:11
+    flags:
+    cmp:&b
+    text:"Thumbnails Small"
+    text_limit:*
+    click_object_name:""
+    sub_menu_object_name:""
+    sub_menu_action:&0
+    click_action:&0
+    help:""
+    help_limit:*
+  }
+  Entry {
+    cmp:12
+    flags:menu_ENTRY_SEPARATE
+    cmp:&c
+    text:"Thumbnails Tiny"
+    text_limit:*
+    click_object_name:""
+    sub_menu_object_name:""
+    sub_menu_action:&0
+    click_action:&0
+    help:""
+    help_limit:*
+  }
+  Entry {
+    cmp:3
+    flags:
+    cmp:&3
+    text:"2D size bars"
+    text_limit:*
+    click_object_name:""
+    sub_menu_object_name:""
+    sub_menu_action:&0
+    click_action:&0
+    help:""
+    help_limit:*
+  }
+  Entry {
+    cmp:4
+    flags:
+    cmp:&4
+    text:"Treemap"
+    text_limit:*
+    click_object_name:""
+    sub_menu_object_name:""
+    sub_menu_action:&0
+    click_action:&0
+    help:""
+    help_limit:*
+  }
+  Entry {
+    cmp:5
+    flags:menu_ENTRY_FADED
+    cmp:&5
+    text:"3D boxes"
+    text_limit:*
+    click_object_name:""
+    sub_menu_object_name:""
+    sub_menu_action:&0
+    click_action:&0
+    help:""
+    help_limit:*
+  }
+  Entry {
+    cmp:6
+    flags:menu_ENTRY_FADED
+    cmp:&6
+    text:"3D circular"
+    text_limit:*
+    click_object_name:""
+    sub_menu_object_name:""
+    sub_menu_action:&0
+    click_action:&0
+    help:""
+    help_limit:*
+  }
+  Entry {
+    cmp:7
+    flags:menu_ENTRY_FADED
+    cmp:&7
+    text:"Flowers"
+    text_limit:*
+    click_object_name:""
+    sub_menu_object_name:""
+    sub_menu_action:&0
+    click_action:&0
+    help:""
+    help_limit:*
+  }
+}
+
+menu_object {
+  header_flags:
+  version:102
+  object_name:"MAction"
+  menu_flags:menu_GENERATE_ABOUT_TO_BE_SHOWN
+  title:"Action"
+  title_limit:*
+  help:""
+  help_limit:*
+  show_action:&0
+  hide_action:
+  Entry {
+    cmp:1
+    flags:
+    cmp:&1
+    text:"Add to favourites"
+    text_limit:250
+    click_object_name:""
+    sub_menu_object_name:""
+    sub_menu_action:&0
+    click_action:&0
+    help:""
+    help_limit:*
+  }
+  Entry {
+    cmp:0
+    flags:
+    cmp:&0
+    text:"Copy path to clipboard"
+    text_limit:200
+    click_object_name:""
+    sub_menu_object_name:""
+    sub_menu_action:&0
+    click_action:&0
+    help:""
+    help_limit:*
+  }
+  Entry {
+    cmp:2
+    flags:menu_ENTRY_SUB_MENU | menu_ENTRY_IS_MENU | 0x4000
+    cmp:&2
+    text:"Export as CSV"
+    text_limit:200
+    click_object_name:""
+    sub_menu_object_name:"MExpCSV"
+    sub_menu_action:&0
+    click_action:&0
+    help:""
+    help_limit:*
+  }
+}
+
+menu_object {
+  header_flags:toolbox_OBJECT_CREATE_ON_LOAD
+  version:102
+  object_name:"MFavorite"
+  menu_flags:menu_GENERATE_ABOUT_TO_BE_SHOWN | menu_GENERATE_DIALOGUE_COMPLETED
+  title:"Favorite Locations"
+  title_limit:*
+  help:""
+  help_limit:*
+  show_action:&0
+  hide_action:&0
+  Entry {
+    cmp:0
+    flags:
+    cmp:&0
+    text:"Dir"
+    text_limit:100
+    click_object_name:""
+    sub_menu_object_name:""
+    sub_menu_action:&0
+    click_action:&0
+    help:""
+    help_limit:*
+  }
+}
+
+menu_object {
+  header_flags:
+  version:102
+  object_name:"MNew"
+  menu_flags:menu_GENERATE_ABOUT_TO_BE_SHOWN
+  title:"New"
+  title_limit:*
+  help:""
+  help_limit:*
+  show_action:&0
+  hide_action:
+  Entry {
+    cmp:16
+    flags:
+    cmp:&10
+    text:"Window        ^N"
+    text_limit:*
+    click_object_name:""
+    sub_menu_object_name:""
+    sub_menu_action:&0
+    click_action:&0
+    help:""
+    help_limit:*
+  }
+  Entry {
+    cmp:48
+    flags:menu_ENTRY_SEPARATE
+    cmp:&30
+    text:"Window (min)  ^M"
+    text_limit:*
+    click_object_name:""
+    sub_menu_object_name:""
+    sub_menu_action:&0
+    click_action:&0
+    help:""
+    help_limit:*
+  }
+  Entry {
+    cmp:32
+    flags:0x4000
+    cmp:&20
+    text:"Directory...  ^D"
+    text_limit:*
+    click_object_name:"WCreateDir"
+    sub_menu_object_name:""
+    sub_menu_action:&0
+    click_action:&0
+    help:""
+    help_limit:*
+  }
+}
+
+menu_object {
+  header_flags:
+  version:102
+  object_name:"MRoots"
+  menu_flags:menu_GENERATE_ABOUT_TO_BE_SHOWN | menu_GENERATE_DIALOGUE_COMPLETED
+  title:"Open Drive"
+  title_limit:*
+  help:""
+  help_limit:*
+  show_action:&0
+  hide_action:&0
+  Entry {
+    cmp:0
+    flags:
+    cmp:&0
+    text:"Root"
+    text_limit:200
+    click_object_name:""
+    sub_menu_object_name:""
+    sub_menu_action:&0
+    click_action:&0
+    help:""
+    help_limit:*
+  }
+}
+
+window_object {
+  header_flags:
+  version:102
+  object_name:"WDisclaim"
+  window_flags:window_GENERATE_ABOUT_TO_BE_SHOWN | window_AUTO_OPEN | window_AUTO_CLOSE | window_GENERATE_DIALOGUE_COMPLETED
+  help_message:""
+  help_limit:*
+  sprite_name:""
+  pointer_limit:0
+  hotspot:0,0
+  menu_name:""
+  default_focus:toolbox_NULL_COMPONENT
+  show_action:&0
+  hide_action:&0
+  toolbar_ibl:""
+  toolbar_itl:""
+  toolbar_ebl:""
+  toolbar_etl:""
+  window.visible:4,160,1604,1160
+  window.xscroll:0
+  window.yscroll:0
+  window.next:wimp_TOP
+  window.flags:wimp_WINDOW_MOVEABLE | wimp_WINDOW_AUTO_REDRAW | wimp_WINDOW_BACK_ICON | wimp_WINDOW_CLOSE_ICON | wimp_WINDOW_TITLE_ICON | wimp_WINDOW_SIZE_ICON | wimp_WINDOW_NEW_FORMAT
+  window.title_fg:wimp_COLOUR_BLACK
+  window.title_bg:wimp_COLOUR_LIGHT_GREY
+  window.work_fg:wimp_COLOUR_BLACK
+  window.work_bg:wimp_COLOUR_VERY_LIGHT_GREY
+  window.scroll_outer:wimp_COLOUR_MID_LIGHT_GREY
+  window.scroll_inner:wimp_COLOUR_VERY_LIGHT_GREY
+  window.highlight_bg:wimp_COLOUR_CREAM
+  window.extra_flags:
+  window.extent:0,-1000,1600,0
+  window.title_flags:wimp_ICON_TEXT | wimp_ICON_HCENTRED | wimp_ICON_VCENTRED | wimp_ICON_INDIRECTED
+  window.work_flags:
+  window.sprite_area:&ffffffff
+  window.xmin:1600
+  window.ymin:1000
+  window.title_text:"Disclaimer"
+  window.title_text_limit:*
+  window.title_valid:""
+  textarea_object {
+    cmp:&0
+    bbox:12,-924,1580,-12
+    help_message:""
+    help_limit:*
+    flags:textarea_STATE_HAS_VERTICAL_SCROLLBAR | textarea_STATE_WORDWRAPPING_ENABLED
+    type:0
+    event:0
+    text:"TextArea"
+    foreground:os_COLOUR_BLACK
+    background:os_COLOUR_WHITE
+  }
+  actionbutton_object {
+    cmp:&1
+    bbox:596,-988,784,-936
+    help_message:""
+    help_limit:*
+    flags:actionbutton_IS_CANCEL
+    text:"Decline"
+    text_limit:*
+    click_show:""
+    action:&0
+  }
+  actionbutton_object {
+    cmp:&2
+    bbox:820,-996,1024,-928
+    help_message:""
+    help_limit:*
+    flags:actionbutton_IS_DEFAULT
+    text:"Accept"
+    text_limit:*
+    click_show:""
+    action:&0
+  }
+}
+
+window_object {
+  header_flags:
+  version:102
+  object_name:"WAskDonate"
+  window_flags:window_GENERATE_ABOUT_TO_BE_SHOWN | window_AUTO_OPEN | window_AUTO_CLOSE | window_GENERATE_DIALOGUE_COMPLETED
+  help_message:""
+  help_limit:*
+  sprite_name:""
+  pointer_limit:0
+  hotspot:0,0
+  menu_name:""
+  default_focus:toolbox_NULL_COMPONENT
+  show_action:&0
+  hide_action:&0
+  toolbar_ibl:""
+  toolbar_itl:""
+  toolbar_ebl:""
+  toolbar_etl:""
+  window.visible:580,1052,1368,1284
+  window.xscroll:0
+  window.yscroll:0
+  window.next:wimp_TOP
+  window.flags:wimp_WINDOW_MOVEABLE | wimp_WINDOW_AUTO_REDRAW | wimp_WINDOW_CLOSE_ICON | wimp_WINDOW_TITLE_ICON | wimp_WINDOW_SIZE_ICON | wimp_WINDOW_NEW_FORMAT
+  window.title_fg:wimp_COLOUR_BLACK
+  window.title_bg:wimp_COLOUR_LIGHT_GREY
+  window.work_fg:wimp_COLOUR_BLACK
+  window.work_bg:wimp_COLOUR_VERY_LIGHT_GREY
+  window.scroll_outer:wimp_COLOUR_MID_LIGHT_GREY
+  window.scroll_inner:wimp_COLOUR_VERY_LIGHT_GREY
+  window.highlight_bg:wimp_COLOUR_CREAM
+  window.extra_flags:
+  window.extent:0,-1024,1280,0
+  window.title_flags:wimp_ICON_TEXT | wimp_ICON_HCENTRED | wimp_ICON_VCENTRED | wimp_ICON_INDIRECTED
+  window.work_flags:
+  window.sprite_area:&ffffffff
+  window.xmin:100
+  window.ymin:100
+  window.title_text:"CLFiler"
+  window.title_text_limit:*
+  window.title_valid:""
+  button_object {
+    cmp:&0
+    bbox:16,-120,132,-16
+    help_message:""
+    help_limit:*
+    flags:button_TASK_SPRITE_AREA
+    button_flags:wimp_ICON_SPRITE | wimp_ICON_HCENTRED | wimp_ICON_VCENTRED | wimp_ICON_INDIRECTED | wimp_BUTTON_CLICK
+    button_esg:0
+    button_fg:wimp_COLOUR_BLACK
+    button_bg:wimp_COLOUR_WHITE
+    value:"!clfiler"
+    value_limit:*
+    validation:""
+    validation_limit:*
+  }
+  button_object {
+    cmp:&1
+    bbox:144,-128,768,-24
+    help_message:""
+    help_limit:*
+    flags:
+    button_flags:wimp_ICON_TEXT | wimp_ICON_INDIRECTED
+    button_esg:0
+    button_fg:wimp_COLOUR_BLACK
+    button_bg:wimp_COLOUR_WHITE
+    value:"This function available in the full version"
+    value_limit:200
+    validation:"L"
+    validation_limit:*
+  }
+  actionbutton_object {
+    cmp:&3
+    bbox:328,-196,516,-144
+    help_message:""
+    help_limit:*
+    flags:
+    text:"Donate"
+    text_limit:*
+    click_show:""
+    action:&0
+  }
+}
+
+window_object {
+  header_flags:
+  version:102
+  object_name:"SWStatusTB"
+  window_flags:window_GENERATE_ABOUT_TO_BE_SHOWN | window_GENERATE_DIALOGUE_COMPLETED
+  help_message:""
+  help_limit:*
+  sprite_name:""
+  pointer_limit:0
+  hotspot:0,0
+  menu_name:""
+  default_focus:toolbox_NULL_COMPONENT
+  show_action:&0
+  hide_action:&0
+  toolbar_ibl:""
+  toolbar_itl:""
+  toolbar_ebl:""
+  toolbar_etl:""
+  window.visible:4,1452,2048,1508
+  window.xscroll:0
+  window.yscroll:0
+  window.next:wimp_TOP
+  window.flags:wimp_WINDOW_MOVEABLE | wimp_WINDOW_AUTO_REDRAW | wimp_WINDOW_NEW_FORMAT
+  window.title_fg:wimp_COLOUR_BLACK
+  window.title_bg:wimp_COLOUR_LIGHT_GREY
+  window.work_fg:wimp_COLOUR_BLACK
+  window.work_bg:wimp_COLOUR_VERY_LIGHT_GREY
+  window.scroll_outer:wimp_COLOUR_MID_LIGHT_GREY
+  window.scroll_inner:wimp_COLOUR_VERY_LIGHT_GREY
+  window.highlight_bg:wimp_COLOUR_CREAM
+  window.extra_flags:
+  window.extent:0,-56,10000,0
+  window.title_flags:wimp_ICON_TEXT | wimp_ICON_HCENTRED | wimp_ICON_VCENTRED | wimp_ICON_INDIRECTED
+  window.work_flags:wimp_BUTTON_ALWAYS | wimp_BUTTON_REPEAT
+  window.sprite_area:&ffffffff
+  window.xmin:100
+  window.ymin:56
+  window.title_text:""
+  window.title_text_limit:*
+  window.title_valid:""
+  button_object {
+    cmp:&1
+    bbox:8,-52,2784,-8
+    help_message:"Show Free/Total drive size if root directory is selected or file/directory info if file/directory is selected"
+    help_limit:*
+    flags:
+    button_flags:wimp_ICON_TEXT | wimp_ICON_VCENTRED | wimp_ICON_INDIRECTED | wimp_BUTTON_CLICK
+    button_esg:0
+    button_fg:wimp_COLOUR_BLACK
+    button_bg:wimp_COLOUR_WHITE
+    value:"Total: 9999MB"
+    value_limit:300
+    validation:""
+    validation_limit:*
+  }
+}
+
+menu_object {
+  header_flags:
+  version:102
+  object_name:"MThumbView"
+  menu_flags:menu_GENERATE_ABOUT_TO_BE_SHOWN
+  title:"Thumbnails"
+  title_limit:*
+  help:""
+  help_limit:*
+  show_action:&0
+  hide_action:
+  Entry {
+    cmp:1
+    flags:
+    cmp:&1
+    text:"Large  F5"
+    text_limit:*
+    click_object_name:""
+    sub_menu_object_name:""
+    sub_menu_action:&0
+    click_action:&0
+    help:""
+    help_limit:*
+  }
+  Entry {
+    cmp:2
+    flags:
+    cmp:&2
+    text:"Medium"
+    text_limit:*
+    click_object_name:""
+    sub_menu_object_name:""
+    sub_menu_action:&0
+    click_action:&0
+    help:""
+    help_limit:*
+  }
+  Entry {
+    cmp:3
+    flags:
+    cmp:&3
+    text:"Small"
+    text_limit:*
+    click_object_name:""
+    sub_menu_object_name:""
+    sub_menu_action:&0
+    click_action:&0
+    help:""
+    help_limit:*
+  }
+  Entry {
+    cmp:4
+    flags:
+    cmp:&4
+    text:"Tiny"
+    text_limit:*
+    click_object_name:""
+    sub_menu_object_name:""
+    sub_menu_action:&0
+    click_action:&0
+    help:""
+    help_limit:*
+  }
+}
+
+window_object {
+  header_flags:toolbox_OBJECT_ANCESTOR
+  version:102
+  object_name:"WImageView"
+  window_flags:window_GENERATE_ABOUT_TO_BE_SHOWN | window_AUTO_CLOSE | window_GENERATE_DIALOGUE_COMPLETED
+  help_message:""
+  help_limit:*
+  sprite_name:""
+  pointer_limit:0
+  hotspot:0,0
+  menu_name:"MImageView"
+  default_focus:toolbox_WINDOW_FOCUS
+  show_action:&0
+  hide_action:&0
+  toolbar_ibl:""
+  toolbar_itl:""
+  toolbar_ebl:""
+  toolbar_etl:""
+  window.visible:492,576,1772,1596
+  window.xscroll:0
+  window.yscroll:0
+  window.next:wimp_TOP
+  window.flags:wimp_WINDOW_MOVEABLE | wimp_WINDOW_SCROLL_REPEAT | wimp_WINDOW_IGNORE_XEXTENT | wimp_WINDOW_IGNORE_YEXTENT | wimp_WINDOW_BACK_ICON | wimp_WINDOW_CLOSE_ICON | wimp_WINDOW_TITLE_ICON | wimp_WINDOW_TOGGLE_ICON | wimp_WINDOW_VSCROLL | wimp_WINDOW_SIZE_ICON | wimp_WINDOW_HSCROLL | wimp_WINDOW_NEW_FORMAT
+  window.title_fg:wimp_COLOUR_BLACK
+  window.title_bg:wimp_COLOUR_LIGHT_GREY
+  window.work_fg:wimp_COLOUR_BLACK
+  window.work_bg:wimp_COLOUR_VERY_LIGHT_GREY
+  window.scroll_outer:wimp_COLOUR_MID_LIGHT_GREY
+  window.scroll_inner:wimp_COLOUR_VERY_LIGHT_GREY
+  window.highlight_bg:wimp_COLOUR_CREAM
+  window.extra_flags:
+  window.extent:0,-1024,1280,0
+  window.title_flags:wimp_ICON_TEXT | wimp_ICON_HCENTRED | wimp_ICON_VCENTRED | wimp_ICON_INDIRECTED
+  window.work_flags:wimp_BUTTON_REPEAT | wimp_BUTTON_RELEASE
+  window.sprite_area:&0
+  window.xmin:100
+  window.ymin:100
+  window.title_text:"Window object"
+  window.title_text_limit:300
+  window.title_valid:""
+}
+
+menu_object {
+  header_flags:toolbox_OBJECT_SHARED
+  version:102
+  object_name:"MSaveAsImg"
+  menu_flags:menu_GENERATE_ABOUT_TO_BE_SHOWN | menu_GENERATE_DIALOGUE_COMPLETED
+  title:"Save as"
+  title_limit:*
+  help:""
+  help_limit:*
+  show_action:&0
+  hide_action:&0
+  Entry {
+    cmp:1
+    flags:0x4000
+    cmp:&1
+    text:"Save as JPG..."
+    text_limit:*
+    click_object_name:"CSaveJPEG"
+    sub_menu_object_name:""
+    sub_menu_action:&0
+    click_action:&0
+    help:""
+    help_limit:*
+  }
+  Entry {
+    cmp:2
+    flags:0x4000
+    cmp:&2
+    text:"Save as PNG..."
+    text_limit:*
+    click_object_name:"CSavePNG"
+    sub_menu_object_name:"CSavePNG"
+    sub_menu_action:&0
+    click_action:&0
+    help:""
+    help_limit:*
+  }
+  Entry {
+    cmp:3
+    flags:0x4000
+    cmp:&3
+    text:"Save as TIFF..."
+    text_limit:*
+    click_object_name:"CSaveAs"
+    sub_menu_object_name:""
+    sub_menu_action:&0
+    click_action:&0
+    help:""
+    help_limit:*
+  }
+  Entry {
+    cmp:4
+    flags:0x4000
+    cmp:&4
+    text:"Save as GIF..."
+    text_limit:*
+    click_object_name:"CSaveAs"
+    sub_menu_object_name:""
+    sub_menu_action:&0
+    click_action:&0
+    help:""
+    help_limit:*
+  }
+  Entry {
+    cmp:5
+    flags:0x4000
+    cmp:&5
+    text:"Save as WEBP..."
+    text_limit:*
+    click_object_name:"CSaveWEBP"
+    sub_menu_object_name:"CSaveAs"
+    sub_menu_action:&0
+    click_action:&0
+    help:""
+    help_limit:*
+  }
+  Entry {
+    cmp:6
+    flags:0x4000
+    cmp:&6
+    text:"Save as Sprite..."
+    text_limit:*
+    click_object_name:"CSaveAs"
+    sub_menu_object_name:""
+    sub_menu_action:&0
+    click_action:&0
+    help:""
+    help_limit:*
+  }
+}
+
+saveas_object {
+  header_flags:toolbox_OBJECT_SHARED
+  version:100
+  object_name:"CSaveAs"
+  saveas_flags:saveas_GENERATE_ABOUT_TO_BE_SHOWN | saveas_GENERATE_DIALOGUE_COMPLETED | saveas_NO_SELECTION_BUTTON
+  file_name:"Untitled"
+  file_type:&0
+  title:""
+  title_limit:*
+  alternative_window_name:"WSaveImage"
+}
+
+window_object {
+  header_flags:toolbox_OBJECT_SHARED
+  version:102
+  object_name:"WSavePNG"
+  window_flags:window_GENERATE_ABOUT_TO_BE_SHOWN | window_AUTO_OPEN | window_AUTO_CLOSE | window_GENERATE_DIALOGUE_COMPLETED
+  help_message:""
+  help_limit:*
+  sprite_name:""
+  pointer_limit:0
+  hotspot:0,0
+  menu_name:""
+  default_focus:&82bc01
+  show_action:&0
+  hide_action:&0
+  toolbar_ibl:""
+  toolbar_itl:""
+  toolbar_ebl:""
+  toolbar_etl:""
+  window.visible:156,1320,732,1760
+  window.xscroll:0
+  window.yscroll:0
+  window.next:wimp_TOP
+  window.flags:wimp_WINDOW_MOVEABLE | wimp_WINDOW_AUTO_REDRAW | wimp_WINDOW_BACK_ICON | wimp_WINDOW_CLOSE_ICON | wimp_WINDOW_TITLE_ICON | wimp_WINDOW_SIZE_ICON | wimp_WINDOW_NEW_FORMAT
+  window.title_fg:wimp_COLOUR_BLACK
+  window.title_bg:wimp_COLOUR_LIGHT_GREY
+  window.work_fg:wimp_COLOUR_BLACK
+  window.work_bg:wimp_COLOUR_VERY_LIGHT_GREY
+  window.scroll_outer:wimp_COLOUR_MID_LIGHT_GREY
+  window.scroll_inner:wimp_COLOUR_VERY_LIGHT_GREY
+  window.highlight_bg:wimp_COLOUR_CREAM
+  window.extra_flags:
+  window.extent:0,-500,580,0
+  window.title_flags:wimp_ICON_TEXT | wimp_ICON_HCENTRED | wimp_ICON_VCENTRED | wimp_ICON_INDIRECTED
+  window.work_flags:
+  window.sprite_area:&ffffffff
+  window.xmin:100
+  window.ymin:100
+  window.title_text:"Save as PNG"
+  window.title_text_limit:255
+  window.title_valid:""
+  numberrange_object {
+    cmp:&6
+    bbox:276,-344,464,-292
+    help_message:""
+    help_limit:*
+    flags:numberrange_ADJUSTERS | numberrange_RJUSTIFIED | numberrange_KNOB_COLOUR_MID_DARK_GREY
+    lower_bound:1
+    upper_bound:9
+    step_size:1
+    initial_value:9
+    precision:0
+    prev:toolbox_NULL_COMPONENT
+    next:toolbox_NULL_COMPONENT
+    display_length:116
+  }
+  label_object {
+    cmp:&7
+    bbox:48,-340,236,-288
+    help_message:""
+    help_limit:*
+    flags:label_NO_BOX | label_RJUSTIFIED
+    label:"Compression"
+  }
+  label_object {
+    cmp:&a
+    bbox:36,-404,224,-352
+    help_message:""
+    help_limit:*
+    flags:label_NO_BOX | label_RJUSTIFIED
+    label:"Background"
+  }
+  writablefield_object {
+    cmp:&b
+    bbox:272,-408,460,-356
+    help_message:""
+    help_limit:*
+    flags:writablefield_HCENTRED
+    text:"FFFFFFFF"
+    text_limit:*
+    allowable:"0-9ABCDEF"
+    allowable_limit:*
+    prev:toolbox_NULL_COMPONENT
+    next:toolbox_NULL_COMPONENT
+  }
+  button_object {
+    cmp:&c
+    bbox:472,-408,528,-360
+    help_message:""
+    help_limit:*
+    flags:button_TASK_SPRITE_AREA
+    button_flags:wimp_ICON_TEXT | wimp_ICON_SPRITE | wimp_ICON_BORDER | wimp_ICON_HCENTRED | wimp_ICON_VCENTRED | wimp_ICON_FILLED | wimp_ICON_INDIRECTED | wimp_BUTTON_CLICK
+    button_esg:0
+    button_fg:wimp_COLOUR_BLACK
+    button_bg:wimp_COLOUR_WHITE
+    value:""
+    value_limit:8
+    validation:"R1;Shatch"
+    validation_limit:40
+  }
+  label_object {
+    cmp:&d
+    bbox:44,-224,216,-172
+    help_message:"Set resolution of saved image"
+    help_limit:*
+    flags:label_NO_BOX
+    label:"Dimensions"
+  }
+  label_object {
+    cmp:&e
+    bbox:204,-224,264,-172
+    help_message:""
+    help_limit:*
+    flags:label_NO_BOX | label_RJUSTIFIED
+    label:"W:"
+  }
+  label_object {
+    cmp:&f
+    bbox:196,-280,264,-228
+    help_message:""
+    help_limit:*
+    flags:label_NO_BOX | label_RJUSTIFIED
+    label:"H:"
+  }
+  writablefield_object {
+    cmp:&10
+    bbox:276,-224,464,-172
+    help_message:""
+    help_limit:*
+    flags:writablefield_HCENTRED
+    text:"Writable"
+    text_limit:*
+    allowable:""
+    allowable_limit:*
+    prev:toolbox_NULL_COMPONENT
+    next:toolbox_NULL_COMPONENT
+  }
+  writablefield_object {
+    cmp:&11
+    bbox:276,-280,464,-228
+    help_message:""
+    help_limit:*
+    flags:writablefield_HCENTRED
+    text:"Writable"
+    text_limit:*
+    allowable:""
+    allowable_limit:*
+    prev:toolbox_NULL_COMPONENT
+    next:toolbox_NULL_COMPONENT
+  }
+  label_object {
+    cmp:&12
+    bbox:472,-220,560,-168
+    help_message:""
+    help_limit:*
+    flags:label_NO_BOX
+    label:"pixel"
+  }
+  label_object {
+    cmp:&13
+    bbox:472,-276,556,-224
+    help_message:""
+    help_limit:*
+    flags:label_NO_BOX
+    label:"pixel"
+  }
+  draggable_object {
+    cmp:&82bc00
+    bbox:100,-88,196,-8
+    help_message:""
+    help_limit:*
+    flags:draggable_GENERATE_DRAG_STARTED | draggable_SPRITE | draggable_DROP_SHADOW
+    text:"Draggable"
+    text_limit:*
+    sprite_name:"file_fae"
+    sprite_limit:13
+  }
+  writablefield_object {
+    cmp:&82bc01
+    bbox:28,-148,256,-96
+    help_message:""
+    help_limit:*
+    flags:writablefield_HCENTRED
+    text:"output_png"
+    text_limit:255
+    allowable:""
+    allowable_limit:*
+    prev:toolbox_NULL_COMPONENT
+    next:toolbox_NULL_COMPONENT
+  }
+  actionbutton_object {
+    cmp:&82bc02
+    bbox:280,-76,468,-24
+    help_message:""
+    help_limit:*
+    flags:actionbutton_IS_CANCEL
+    text:"Cancel"
+    text_limit:*
+    click_show:""
+    action:&0
+  }
+  actionbutton_object {
+    cmp:&82bc03
+    bbox:272,-156,476,-88
+    help_message:""
+    help_limit:*
+    flags:actionbutton_IS_DEFAULT
+    text:"Save"
+    text_limit:*
+    click_show:""
+    action:&0
+  }
+}
+
+saveas_object {
+  header_flags:toolbox_OBJECT_SHARED
+  version:100
+  object_name:"CSavePNG"
+  saveas_flags:saveas_GENERATE_ABOUT_TO_BE_SHOWN | saveas_GENERATE_DIALOGUE_COMPLETED | saveas_NO_SELECTION_BUTTON
+  file_name:"Untitled"
+  file_type:&b60
+  title:""
+  title_limit:*
+  alternative_window_name:"WSavePNG"
+}
+
+colourdbox_object {
+  header_flags:
+  version:100
+  object_name:"DBgColor"
+  colourdbox_flags:colourdbox_GENERATE_ABOUT_TO_BE_SHOWN | colourdbox_GENERATE_DIALOGUE_COMPLETED | colourdbox_INCLUDE_NONE_BUTTON
+  title:"Background color"
+  title_limit:*
+  colour:os_COLOUR_BLACK
+}
+
+window_object {
+  header_flags:toolbox_OBJECT_SHARED
+  version:102
+  object_name:"WSaveJPEG"
+  window_flags:window_GENERATE_ABOUT_TO_BE_SHOWN | window_AUTO_OPEN | window_AUTO_CLOSE | window_GENERATE_DIALOGUE_COMPLETED
+  help_message:""
+  help_limit:*
+  sprite_name:""
+  pointer_limit:0
+  hotspot:0,0
+  menu_name:""
+  default_focus:&82bc01
+  show_action:&0
+  hide_action:&0
+  toolbar_ibl:""
+  toolbar_itl:""
+  toolbar_ebl:""
+  toolbar_etl:""
+  window.visible:1092,1248,1672,1752
+  window.xscroll:0
+  window.yscroll:0
+  window.next:wimp_TOP
+  window.flags:wimp_WINDOW_MOVEABLE | wimp_WINDOW_AUTO_REDRAW | wimp_WINDOW_BACK_ICON | wimp_WINDOW_CLOSE_ICON | wimp_WINDOW_TITLE_ICON | wimp_WINDOW_SIZE_ICON | wimp_WINDOW_NEW_FORMAT
+  window.title_fg:wimp_COLOUR_BLACK
+  window.title_bg:wimp_COLOUR_LIGHT_GREY
+  window.work_fg:wimp_COLOUR_BLACK
+  window.work_bg:wimp_COLOUR_VERY_LIGHT_GREY
+  window.scroll_outer:wimp_COLOUR_MID_LIGHT_GREY
+  window.scroll_inner:wimp_COLOUR_VERY_LIGHT_GREY
+  window.highlight_bg:wimp_COLOUR_CREAM
+  window.extra_flags:
+  window.extent:0,-508,580,0
+  window.title_flags:wimp_ICON_TEXT | wimp_ICON_HCENTRED | wimp_ICON_VCENTRED | wimp_ICON_INDIRECTED
+  window.work_flags:
+  window.sprite_area:&ffffffff
+  window.xmin:100
+  window.ymin:100
+  window.title_text:"Save as JPEG"
+  window.title_text_limit:255
+  window.title_valid:""
+  numberrange_object {
+    cmp:&6
+    bbox:284,-420,472,-368
+    help_message:""
+    help_limit:*
+    flags:numberrange_ADJUSTERS | numberrange_RJUSTIFIED | numberrange_KNOB_COLOUR_MID_DARK_GREY
+    lower_bound:1
+    upper_bound:100
+    step_size:1
+    initial_value:85
+    precision:0
+    prev:toolbox_NULL_COMPONENT
+    next:toolbox_NULL_COMPONENT
+    display_length:116
+  }
+  label_object {
+    cmp:&7
+    bbox:40,-416,228,-364
+    help_message:""
+    help_limit:*
+    flags:label_NO_BOX | label_RJUSTIFIED
+    label:"Quality"
+  }
+  label_object {
+    cmp:&a
+    bbox:44,-484,232,-432
+    help_message:""
+    help_limit:*
+    flags:label_NO_BOX | label_RJUSTIFIED
+    label:"Background"
+  }
+  writablefield_object {
+    cmp:&b
+    bbox:280,-488,468,-436
+    help_message:""
+    help_limit:*
+    flags:writablefield_HCENTRED
+    text:"FFFFFFFF"
+    text_limit:*
+    allowable:"0-9ABCDEF"
+    allowable_limit:*
+    prev:toolbox_NULL_COMPONENT
+    next:toolbox_NULL_COMPONENT
+  }
+  button_object {
+    cmp:&c
+    bbox:480,-488,536,-440
+    help_message:""
+    help_limit:*
+    flags:button_TASK_SPRITE_AREA
+    button_flags:wimp_ICON_TEXT | wimp_ICON_SPRITE | wimp_ICON_BORDER | wimp_ICON_HCENTRED | wimp_ICON_VCENTRED | wimp_ICON_FILLED | wimp_ICON_INDIRECTED | wimp_BUTTON_CLICK
+    button_esg:0
+    button_fg:wimp_COLOUR_BLACK
+    button_bg:wimp_COLOUR_WHITE
+    value:""
+    value_limit:8
+    validation:"R1;Shatch"
+    validation_limit:40
+  }
+  label_object {
+    cmp:&d
+    bbox:36,-296,208,-244
+    help_message:"Set resolution of saved image"
+    help_limit:*
+    flags:label_NO_BOX
+    label:"Dimensions"
+  }
+  label_object {
+    cmp:&e
+    bbox:200,-296,260,-244
+    help_message:""
+    help_limit:*
+    flags:label_NO_BOX | label_RJUSTIFIED
+    label:"W:"
+  }
+  label_object {
+    cmp:&f
+    bbox:192,-352,260,-300
+    help_message:""
+    help_limit:*
+    flags:label_NO_BOX | label_RJUSTIFIED
+    label:"H:"
+  }
+  writablefield_object {
+    cmp:&10
+    bbox:284,-296,460,-244
+    help_message:""
+    help_limit:*
+    flags:writablefield_HCENTRED
+    text:"Writable"
+    text_limit:*
+    allowable:""
+    allowable_limit:*
+    prev:toolbox_NULL_COMPONENT
+    next:toolbox_NULL_COMPONENT
+  }
+  writablefield_object {
+    cmp:&11
+    bbox:284,-352,460,-300
+    help_message:""
+    help_limit:*
+    flags:writablefield_HCENTRED
+    text:"Writable"
+    text_limit:*
+    allowable:""
+    allowable_limit:*
+    prev:toolbox_NULL_COMPONENT
+    next:toolbox_NULL_COMPONENT
+  }
+  label_object {
+    cmp:&12
+    bbox:468,-292,556,-240
+    help_message:""
+    help_limit:*
+    flags:label_NO_BOX
+    label:"pixels"
+  }
+  label_object {
+    cmp:&13
+    bbox:468,-348,552,-296
+    help_message:""
+    help_limit:*
+    flags:label_NO_BOX
+    label:"pixels"
+  }
+  draggable_object {
+    cmp:&82bc00
+    bbox:260,-84,356,-4
+    help_message:""
+    help_limit:*
+    flags:draggable_GENERATE_DRAG_STARTED | draggable_SPRITE | draggable_DROP_SHADOW
+    text:"Draggable"
+    text_limit:*
+    sprite_name:"file_fae"
+    sprite_limit:13
+  }
+  writablefield_object {
+    cmp:&82bc01
+    bbox:28,-148,556,-96
+    help_message:""
+    help_limit:*
+    flags:writablefield_HCENTRED
+    text:"output_jpeg"
+    text_limit:255
+    allowable:""
+    allowable_limit:*
+    prev:toolbox_NULL_COMPONENT
+    next:toolbox_NULL_COMPONENT
+  }
+  actionbutton_object {
+    cmp:&82bc02
+    bbox:72,-220,260,-168
+    help_message:""
+    help_limit:*
+    flags:actionbutton_IS_CANCEL
+    text:"Cancel"
+    text_limit:*
+    click_show:""
+    action:&0
+  }
+  actionbutton_object {
+    cmp:&82bc03
+    bbox:276,-228,480,-160
+    help_message:""
+    help_limit:*
+    flags:actionbutton_IS_DEFAULT
+    text:"Save"
+    text_limit:*
+    click_show:""
+    action:&0
+  }
+}
+
+window_object {
+  header_flags:toolbox_OBJECT_SHARED
+  version:102
+  object_name:"WSaveWEBP"
+  window_flags:window_GENERATE_ABOUT_TO_BE_SHOWN | window_AUTO_OPEN | window_AUTO_CLOSE | window_GENERATE_DIALOGUE_COMPLETED
+  help_message:""
+  help_limit:*
+  sprite_name:""
+  pointer_limit:0
+  hotspot:0,0
+  menu_name:""
+  default_focus:&82bc01
+  show_action:&0
+  hide_action:&0
+  toolbar_ibl:""
+  toolbar_itl:""
+  toolbar_ebl:""
+  toolbar_etl:""
+  window.visible:156,1028,736,1760
+  window.xscroll:0
+  window.yscroll:-16
+  window.next:wimp_TOP
+  window.flags:wimp_WINDOW_MOVEABLE | wimp_WINDOW_AUTO_REDRAW | wimp_WINDOW_BOUNDED | wimp_WINDOW_IGNORE_XEXTENT | wimp_WINDOW_IGNORE_YEXTENT | wimp_WINDOW_BACK_ICON | wimp_WINDOW_CLOSE_ICON | wimp_WINDOW_TITLE_ICON | wimp_WINDOW_SIZE_ICON | wimp_WINDOW_NEW_FORMAT
+  window.title_fg:wimp_COLOUR_BLACK
+  window.title_bg:wimp_COLOUR_LIGHT_GREY
+  window.work_fg:wimp_COLOUR_BLACK
+  window.work_bg:wimp_COLOUR_VERY_LIGHT_GREY
+  window.scroll_outer:wimp_COLOUR_MID_LIGHT_GREY
+  window.scroll_inner:wimp_COLOUR_VERY_LIGHT_GREY
+  window.highlight_bg:wimp_COLOUR_CREAM
+  window.extra_flags:
+  window.extent:0,-816,888,0
+  window.title_flags:wimp_ICON_TEXT | wimp_ICON_HCENTRED | wimp_ICON_VCENTRED | wimp_ICON_INDIRECTED
+  window.work_flags:
+  window.sprite_area:&ffffffff
+  window.xmin:300
+  window.ymin:300
+  window.title_text:"Save as WebP"
+  window.title_text_limit:255
+  window.title_valid:""
+  numberrange_object {
+    cmp:&6
+    bbox:272,-496,460,-444
+    help_message:""
+    help_limit:*
+    flags:numberrange_ADJUSTERS | numberrange_RJUSTIFIED | numberrange_KNOB_COLOUR_MID_DARK_GREY
+    lower_bound:0
+    upper_bound:100
+    step_size:1
+    initial_value:75
+    precision:0
+    prev:toolbox_NULL_COMPONENT
+    next:toolbox_NULL_COMPONENT
+    display_length:116
+  }
+  label_object {
+    cmp:&7
+    bbox:44,-492,232,-440
+    help_message:""
+    help_limit:*
+    flags:label_NO_BOX | label_RJUSTIFIED
+    label:"Quality"
+  }
+  label_object {
+    cmp:&a
+    bbox:40,-584,228,-532
+    help_message:""
+    help_limit:*
+    flags:label_NO_BOX | label_RJUSTIFIED
+    label:"Background"
+  }
+  writablefield_object {
+    cmp:&b
+    bbox:264,-584,452,-532
+    help_message:""
+    help_limit:*
+    flags:writablefield_HCENTRED
+    text:"FFFFFFFF"
+    text_limit:*
+    allowable:"0-9ABCDEF"
+    allowable_limit:*
+    prev:toolbox_NULL_COMPONENT
+    next:toolbox_NULL_COMPONENT
+  }
+  button_object {
+    cmp:&c
+    bbox:464,-584,520,-536
+    help_message:""
+    help_limit:*
+    flags:button_TASK_SPRITE_AREA
+    button_flags:wimp_ICON_TEXT | wimp_ICON_SPRITE | wimp_ICON_BORDER | wimp_ICON_HCENTRED | wimp_ICON_VCENTRED | wimp_ICON_FILLED | wimp_ICON_INDIRECTED | wimp_BUTTON_CLICK
+    button_esg:0
+    button_fg:wimp_COLOUR_BLACK
+    button_bg:wimp_COLOUR_WHITE
+    value:""
+    value_limit:8
+    validation:"R1;Shatch"
+    validation_limit:40
+  }
+  label_object {
+    cmp:&d
+    bbox:40,-376,212,-324
+    help_message:"Set resolution of saved image"
+    help_limit:*
+    flags:label_NO_BOX
+    label:"Dimensions"
+  }
+  label_object {
+    cmp:&e
+    bbox:200,-376,260,-324
+    help_message:""
+    help_limit:*
+    flags:label_NO_BOX | label_RJUSTIFIED
+    label:"W:"
+  }
+  label_object {
+    cmp:&f
+    bbox:192,-432,260,-380
+    help_message:""
+    help_limit:*
+    flags:label_NO_BOX | label_RJUSTIFIED
+    label:"H:"
+  }
+  writablefield_object {
+    cmp:&10
+    bbox:272,-376,460,-324
+    help_message:"Width of image"
+    help_limit:*
+    flags:writablefield_HCENTRED
+    text:"Writable"
+    text_limit:*
+    allowable:""
+    allowable_limit:*
+    prev:toolbox_NULL_COMPONENT
+    next:toolbox_NULL_COMPONENT
+  }
+  writablefield_object {
+    cmp:&11
+    bbox:272,-432,460,-380
+    help_message:"Height of image"
+    help_limit:*
+    flags:writablefield_HCENTRED
+    text:"Writable"
+    text_limit:*
+    allowable:""
+    allowable_limit:*
+    prev:toolbox_NULL_COMPONENT
+    next:toolbox_NULL_COMPONENT
+  }
+  label_object {
+    cmp:&12
+    bbox:468,-372,556,-320
+    help_message:""
+    help_limit:*
+    flags:label_NO_BOX
+    label:"pixel"
+  }
+  label_object {
+    cmp:&13
+    bbox:468,-428,552,-376
+    help_message:""
+    help_limit:*
+    flags:label_NO_BOX
+    label:"pixel"
+  }
+  numberrange_object {
+    cmp:&14
+    bbox:272,-712,460,-660
+    help_message:""
+    help_limit:*
+    flags:numberrange_ADJUSTERS | numberrange_RJUSTIFIED | numberrange_KNOB_COLOUR_MID_DARK_GREY
+    lower_bound:0
+    upper_bound:6
+    step_size:1
+    initial_value:4
+    precision:0
+    prev:toolbox_NULL_COMPONENT
+    next:toolbox_NULL_COMPONENT
+    display_length:116
+  }
+  optionbutton_object {
+    cmp:&15
+    bbox:48,-648,692,-604
+    help_message:"Save images without quality losses"
+    help_limit:*
+    flags:
+    label:"Lossless compression"
+    label_limit:*
+    action:&0
+  }
+  label_object {
+    cmp:&16
+    bbox:52,-708,240,-656
+    help_message:"Set relation (speed to compression) 0 = highest speed, "
+    help_limit:*
+    flags:label_NO_BOX | label_RJUSTIFIED
+    label:"Speed"
+  }
+  draggable_object {
+    cmp:&82bc00
+    bbox:216,-112,312,-32
+    help_message:""
+    help_limit:*
+    flags:draggable_GENERATE_DRAG_STARTED | draggable_SPRITE | draggable_DROP_SHADOW
+    text:"Draggable"
+    text_limit:*
+    sprite_name:"file_fae"
+    sprite_limit:13
+  }
+  writablefield_object {
+    cmp:&82bc01
+    bbox:48,-184,480,-132
+    help_message:""
+    help_limit:*
+    flags:writablefield_HCENTRED
+    text:"output_webp"
+    text_limit:255
+    allowable:""
+    allowable_limit:*
+    prev:toolbox_NULL_COMPONENT
+    next:toolbox_NULL_COMPONENT
+  }
+  actionbutton_object {
+    cmp:&82bc02
+    bbox:56,-260,244,-208
+    help_message:""
+    help_limit:*
+    flags:actionbutton_IS_CANCEL
+    text:"Cancel"
+    text_limit:*
+    click_show:""
+    action:&0
+  }
+  actionbutton_object {
+    cmp:&82bc03
+    bbox:280,-268,484,-200
+    help_message:""
+    help_limit:*
+    flags:actionbutton_IS_DEFAULT
+    text:"Save"
+    text_limit:*
+    click_show:""
+    action:&0
+  }
+}
+
+saveas_object {
+  header_flags:toolbox_OBJECT_SHARED
+  version:100
+  object_name:"CSaveJPEG"
+  saveas_flags:saveas_GENERATE_ABOUT_TO_BE_SHOWN | saveas_GENERATE_DIALOGUE_COMPLETED | saveas_NO_SELECTION_BUTTON
+  file_name:"Untitled"
+  file_type:&c85
+  title:""
+  title_limit:*
+  alternative_window_name:"WSaveJPEG"
+}
+
+saveas_object {
+  header_flags:toolbox_OBJECT_SHARED
+  version:100
+  object_name:"CSaveWEBP"
+  saveas_flags:saveas_GENERATE_ABOUT_TO_BE_SHOWN | saveas_GENERATE_DIALOGUE_COMPLETED | saveas_NO_SELECTION_BUTTON
+  file_name:"Untitled"
+  file_type:&a66
+  title:""
+  title_limit:*
+  alternative_window_name:"WSaveWEBP"
+}
+
+window_object {
+  header_flags:toolbox_OBJECT_SHARED
+  version:102
+  object_name:"WImageInfo"
+  window_flags:window_GENERATE_ABOUT_TO_BE_SHOWN | window_AUTO_OPEN | window_AUTO_CLOSE | window_GENERATE_DIALOGUE_COMPLETED
+  help_message:""
+  help_limit:*
+  sprite_name:""
+  pointer_limit:0
+  hotspot:0,0
+  menu_name:""
+  default_focus:toolbox_WINDOW_FOCUS
+  show_action:&0
+  hide_action:&0
+  toolbar_ibl:""
+  toolbar_itl:""
+  toolbar_ebl:""
+  toolbar_etl:""
+  window.visible:456,496,1724,1616
+  window.xscroll:0
+  window.yscroll:0
+  window.next:wimp_TOP
+  window.flags:wimp_WINDOW_MOVEABLE | wimp_WINDOW_AUTO_REDRAW | wimp_WINDOW_BACK_ICON | wimp_WINDOW_CLOSE_ICON | wimp_WINDOW_TITLE_ICON | wimp_WINDOW_TOGGLE_ICON | wimp_WINDOW_SIZE_ICON | wimp_WINDOW_NEW_FORMAT
+  window.title_fg:wimp_COLOUR_BLACK
+  window.title_bg:wimp_COLOUR_LIGHT_GREY
+  window.work_fg:wimp_COLOUR_BLACK
+  window.work_bg:wimp_COLOUR_VERY_LIGHT_GREY
+  window.scroll_outer:wimp_COLOUR_MID_LIGHT_GREY
+  window.scroll_inner:wimp_COLOUR_VERY_LIGHT_GREY
+  window.highlight_bg:wimp_COLOUR_CREAM
+  window.extra_flags:
+  window.extent:0,-2024,1280,0
+  window.title_flags:wimp_ICON_TEXT | wimp_ICON_HCENTRED | wimp_ICON_VCENTRED | wimp_ICON_INDIRECTED
+  window.work_flags:
+  window.sprite_area:&ffffffff
+  window.xmin:100
+  window.ymin:100
+  window.title_text:"Window object"
+  window.title_text_limit:250
+  window.title_valid:""
+  textarea_object {
+    cmp:&0
+    bbox:12,-1112,1264,-12
+    help_message:""
+    help_limit:*
+    flags:textarea_STATE_HAS_VERTICAL_SCROLLBAR | textarea_STATE_WORDWRAPPING_ENABLED
+    type:0
+    event:0
+    text:""
+    foreground:os_COLOUR_BLACK
+    background:os_COLOUR_WHITE
+  }
+}
+
+menu_object {
+  header_flags:
+  version:102
+  object_name:"MImageView"
+  menu_flags:menu_GENERATE_ABOUT_TO_BE_SHOWN | menu_GENERATE_DIALOGUE_COMPLETED
+  title:"Image View"
+  title_limit:*
+  help:""
+  help_limit:*
+  show_action:&0
+  hide_action:&0
+  Entry {
+    cmp:0
+    flags:menu_ENTRY_IS_MENU
+    cmp:&0
+    text:"Info..."
+    text_limit:*
+    click_object_name:"WImageInfo"
+    sub_menu_object_name:""
+    sub_menu_action:&0
+    click_action:&0
+    help:""
+    help_limit:*
+  }
+  Entry {
+    cmp:1
+    flags:menu_ENTRY_SUB_MENU
+    cmp:&1
+    text:"Save as"
+    text_limit:*
+    click_object_name:""
+    sub_menu_object_name:"MSaveAsImg"
+    sub_menu_action:&0
+    click_action:&0
+    help:""
+    help_limit:*
+  }
+  Entry {
+    cmp:2
+    flags:
+    cmp:&2
+    text:"Delete...  Del"
+    text_limit:20
+    click_object_name:""
+    sub_menu_object_name:""
+    sub_menu_action:&0
+    click_action:&0
+    help:""
+    help_limit:*
+  }
+}
+
+window_object {
+  header_flags:
+  version:102
+  object_name:"WEditPredef"
+  window_flags:window_AUTO_OPEN | window_AUTO_CLOSE
+  help_message:""
+  help_limit:*
+  sprite_name:""
+  pointer_limit:0
+  hotspot:0,0
+  menu_name:""
+  default_focus:toolbox_NULL_COMPONENT
+  show_action:
+  hide_action:
+  toolbar_ibl:""
+  toolbar_itl:""
+  toolbar_ebl:""
+  toolbar_etl:""
+  window.visible:568,776,1272,1240
+  window.xscroll:0
+  window.yscroll:0
+  window.next:wimp_TOP
+  window.flags:wimp_WINDOW_MOVEABLE | wimp_WINDOW_AUTO_REDRAW | wimp_WINDOW_BACK_ICON | wimp_WINDOW_CLOSE_ICON | wimp_WINDOW_TITLE_ICON | wimp_WINDOW_SIZE_ICON | wimp_WINDOW_NEW_FORMAT
+  window.title_fg:wimp_COLOUR_BLACK
+  window.title_bg:wimp_COLOUR_LIGHT_GREY
+  window.work_fg:wimp_COLOUR_BLACK
+  window.work_bg:wimp_COLOUR_VERY_LIGHT_GREY
+  window.scroll_outer:wimp_COLOUR_MID_LIGHT_GREY
+  window.scroll_inner:wimp_COLOUR_VERY_LIGHT_GREY
+  window.highlight_bg:wimp_COLOUR_CREAM
+  window.extra_flags:
+  window.extent:0,-1024,1280,0
+  window.title_flags:wimp_ICON_TEXT | wimp_ICON_HCENTRED | wimp_ICON_VCENTRED | wimp_ICON_INDIRECTED
+  window.work_flags:
+  window.sprite_area:&ffffffff
+  window.xmin:100
+  window.ymin:100
+  window.title_text:"Edit predefined root paths"
+  window.title_text_limit:*
+  window.title_valid:""
+  scrolllist_object {
+    cmp:&0
+    bbox:20,-344,464,-52
+    help_message:""
+    help_limit:*
+    flags:
+    event:0
+    foreground:os_COLOUR_BLACK
+    background:os_COLOUR_WHITE
+  }
+  actionbutton_object {
+    cmp:&1
+    bbox:492,-104,680,-52
+    help_message:""
+    help_limit:*
+    flags:actionbutton_IS_LOCAL
+    text:"Delete"
+    text_limit:*
+    click_show:""
+    action:&0
+  }
+  writablefield_object {
+    cmp:&2
+    bbox:24,-444,472,-392
+    help_message:""
+    help_limit:*
+    flags:writablefield_HCENTRED
+    text:""
+    text_limit:*
+    allowable:""
+    allowable_limit:*
+    prev:toolbox_NULL_COMPONENT
+    next:toolbox_NULL_COMPONENT
+  }
+  actionbutton_object {
+    cmp:&3
+    bbox:492,-444,680,-392
+    help_message:""
+    help_limit:*
+    flags:actionbutton_IS_LOCAL
+    text:"Add"
+    text_limit:*
+    click_show:""
+    action:&0
+  }
+  label_object {
+    cmp:&4
+    bbox:20,-392,472,-348
+    help_message:""
+    help_limit:*
+    flags:label_NO_BOX
+    label:"Add new root path"
+  }
+  label_object {
+    cmp:&5
+    bbox:20,-52,472,-8
+    help_message:""
+    help_limit:*
+    flags:label_NO_BOX
+    label:"Predefined root paths"
+  }
+}
+
+saveas_object {
+  header_flags:
+  version:100
+  object_name:"CSaveAsCsv"
+  saveas_flags:saveas_GENERATE_ABOUT_TO_BE_SHOWN | saveas_GENERATE_DIALOGUE_COMPLETED | saveas_NO_SELECTION_BUTTON
+  file_name:"exported_csv"
+  file_type:&dfe
+  title:"Export directory as CSV"
+  title_limit:300
+  alternative_window_name:""
+}
+
+window_object {
+  header_flags:toolbox_OBJECT_SHARED
+  version:102
+  object_name:"WSaveImage"
+  window_flags:window_GENERATE_ABOUT_TO_BE_SHOWN | window_AUTO_OPEN | window_AUTO_CLOSE | window_GENERATE_DIALOGUE_COMPLETED
+  help_message:""
+  help_limit:*
+  sprite_name:""
+  pointer_limit:0
+  hotspot:0,0
+  menu_name:""
+  default_focus:&82bc01
+  show_action:&0
+  hide_action:&0
+  toolbar_ibl:""
+  toolbar_itl:""
+  toolbar_ebl:""
+  toolbar_etl:""
+  window.visible:1092,1316,1668,1752
+  window.xscroll:0
+  window.yscroll:0
+  window.next:wimp_TOP
+  window.flags:wimp_WINDOW_MOVEABLE | wimp_WINDOW_AUTO_REDRAW | wimp_WINDOW_BACK_ICON | wimp_WINDOW_CLOSE_ICON | wimp_WINDOW_TITLE_ICON | wimp_WINDOW_SIZE_ICON | wimp_WINDOW_NEW_FORMAT
+  window.title_fg:wimp_COLOUR_BLACK
+  window.title_bg:wimp_COLOUR_LIGHT_GREY
+  window.work_fg:wimp_COLOUR_BLACK
+  window.work_bg:wimp_COLOUR_VERY_LIGHT_GREY
+  window.scroll_outer:wimp_COLOUR_MID_LIGHT_GREY
+  window.scroll_inner:wimp_COLOUR_VERY_LIGHT_GREY
+  window.highlight_bg:wimp_COLOUR_CREAM
+  window.extra_flags:
+  window.extent:0,-508,580,0
+  window.title_flags:wimp_ICON_TEXT | wimp_ICON_HCENTRED | wimp_ICON_VCENTRED | wimp_ICON_INDIRECTED
+  window.work_flags:
+  window.sprite_area:&ffffffff
+  window.xmin:100
+  window.ymin:100
+  window.title_text:"Save as image"
+  window.title_text_limit:255
+  window.title_valid:""
+  label_object {
+    cmp:&a
+    bbox:44,-412,232,-360
+    help_message:""
+    help_limit:*
+    flags:label_NO_BOX | label_RJUSTIFIED
+    label:"Background"
+  }
+  writablefield_object {
+    cmp:&b
+    bbox:280,-416,468,-364
+    help_message:""
+    help_limit:*
+    flags:writablefield_HCENTRED
+    text:"FFFFFFFF"
+    text_limit:*
+    allowable:"0-9ABCDEF"
+    allowable_limit:*
+    prev:toolbox_NULL_COMPONENT
+    next:toolbox_NULL_COMPONENT
+  }
+  button_object {
+    cmp:&c
+    bbox:480,-416,536,-368
+    help_message:""
+    help_limit:*
+    flags:button_TASK_SPRITE_AREA
+    button_flags:wimp_ICON_TEXT | wimp_ICON_SPRITE | wimp_ICON_BORDER | wimp_ICON_HCENTRED | wimp_ICON_VCENTRED | wimp_ICON_FILLED | wimp_ICON_INDIRECTED | wimp_BUTTON_CLICK
+    button_esg:0
+    button_fg:wimp_COLOUR_BLACK
+    button_bg:wimp_COLOUR_WHITE
+    value:""
+    value_limit:8
+    validation:"R1;Shatch"
+    validation_limit:40
+  }
+  label_object {
+    cmp:&d
+    bbox:36,-296,208,-244
+    help_message:"Set resolution of saved image"
+    help_limit:*
+    flags:label_NO_BOX
+    label:"Dimensions"
+  }
+  label_object {
+    cmp:&e
+    bbox:200,-296,260,-244
+    help_message:""
+    help_limit:*
+    flags:label_NO_BOX | label_RJUSTIFIED
+    label:"W:"
+  }
+  label_object {
+    cmp:&f
+    bbox:192,-352,260,-300
+    help_message:""
+    help_limit:*
+    flags:label_NO_BOX | label_RJUSTIFIED
+    label:"H:"
+  }
+  writablefield_object {
+    cmp:&10
+    bbox:284,-296,460,-244
+    help_message:""
+    help_limit:*
+    flags:writablefield_HCENTRED
+    text:"Writable"
+    text_limit:*
+    allowable:""
+    allowable_limit:*
+    prev:toolbox_NULL_COMPONENT
+    next:toolbox_NULL_COMPONENT
+  }
+  writablefield_object {
+    cmp:&11
+    bbox:284,-352,460,-300
+    help_message:""
+    help_limit:*
+    flags:writablefield_HCENTRED
+    text:"Writable"
+    text_limit:*
+    allowable:""
+    allowable_limit:*
+    prev:toolbox_NULL_COMPONENT
+    next:toolbox_NULL_COMPONENT
+  }
+  label_object {
+    cmp:&12
+    bbox:468,-292,556,-240
+    help_message:""
+    help_limit:*
+    flags:label_NO_BOX
+    label:"pixels"
+  }
+  label_object {
+    cmp:&13
+    bbox:468,-348,552,-296
+    help_message:""
+    help_limit:*
+    flags:label_NO_BOX
+    label:"pixels"
+  }
+  draggable_object {
+    cmp:&82bc00
+    bbox:260,-84,356,-4
+    help_message:""
+    help_limit:*
+    flags:draggable_GENERATE_DRAG_STARTED | draggable_SPRITE | draggable_DROP_SHADOW
+    text:"Draggable"
+    text_limit:*
+    sprite_name:"file_fae"
+    sprite_limit:13
+  }
+  writablefield_object {
+    cmp:&82bc01
+    bbox:28,-148,556,-96
+    help_message:""
+    help_limit:*
+    flags:writablefield_HCENTRED
+    text:"output_image"
+    text_limit:255
+    allowable:""
+    allowable_limit:*
+    prev:toolbox_NULL_COMPONENT
+    next:toolbox_NULL_COMPONENT
+  }
+  actionbutton_object {
+    cmp:&82bc02
+    bbox:72,-220,260,-168
+    help_message:""
+    help_limit:*
+    flags:actionbutton_IS_CANCEL
+    text:"Cancel"
+    text_limit:*
+    click_show:""
+    action:&0
+  }
+  actionbutton_object {
+    cmp:&82bc03
+    bbox:276,-228,480,-160
+    help_message:""
+    help_limit:*
+    flags:actionbutton_IS_DEFAULT
+    text:"Save"
+    text_limit:*
+    click_show:""
+    action:&0
+  }
+}
+
+menu_object {
+  header_flags:
+  version:102
+  object_name:"MExpCSV"
+  menu_flags:menu_GENERATE_ABOUT_TO_BE_SHOWN | menu_GENERATE_DIALOGUE_COMPLETED
+  title:"CSV Export"
+  title_limit:*
+  help:""
+  help_limit:*
+  show_action:&0
+  hide_action:&0
+  Entry {
+    cmp:1
+    flags:
+    cmp:&1
+    text:"Only current folder..."
+    text_limit:*
+    click_object_name:"CSaveAsCsv"
+    sub_menu_object_name:""
+    sub_menu_action:&0
+    click_action:&0
+    help:""
+    help_limit:*
+  }
+  Entry {
+    cmp:2
+    flags:
+    cmp:&2
+    text:"With subfolders..."
+    text_limit:*
+    click_object_name:"CSaveAsCsv"
+    sub_menu_object_name:""
+    sub_menu_action:&0
+    click_action:&0
+    help:""
+    help_limit:*
+  }
+  Entry {
+    cmp:3
+    flags:
+    cmp:&3
+    text:"Subfolders and !Apps..."
+    text_limit:*
+    click_object_name:"CSaveAsCsv"
+    sub_menu_object_name:""
+    sub_menu_action:&0
+    click_action:&0
+    help:""
+    help_limit:*
+  }
+}
+
+menu_object {
+  header_flags:
+  version:102
+  object_name:"MAccess"
+  menu_flags:menu_GENERATE_ABOUT_TO_BE_SHOWN | menu_GENERATE_DIALOGUE_COMPLETED
+  title:"Access"
+  title_limit:*
+  help:""
+  help_limit:*
+  show_action:&0
+  hide_action:&0
+  Entry {
+    cmp:0
+    flags:
+    cmp:&0
+    text:"Protected"
+    text_limit:*
+    click_object_name:""
+    sub_menu_object_name:""
+    sub_menu_action:&0
+    click_action:&0
+    help:""
+    help_limit:*
+  }
+  Entry {
+    cmp:1
+    flags:menu_ENTRY_SEPARATE
+    cmp:&1
+    text:"Unprotected"
+    text_limit:*
+    click_object_name:""
+    sub_menu_object_name:""
+    sub_menu_action:&0
+    click_action:&0
+    help:""
+    help_limit:*
+  }
+  Entry {
+    cmp:2
+    flags:
+    cmp:&2
+    text:"Public"
+    text_limit:*
+    click_object_name:""
+    sub_menu_object_name:""
+    sub_menu_action:&0
+    click_action:&0
+    help:""
+    help_limit:*
+  }
+  Entry {
+    cmp:3
+    flags:menu_ENTRY_SEPARATE
+    cmp:&3
+    text:"Private"
+    text_limit:*
+    click_object_name:""
+    sub_menu_object_name:""
+    sub_menu_action:&0
+    click_action:&0
+    help:""
+    help_limit:*
+  }
+  Entry {
+    cmp:4
+    flags:menu_ENTRY_SUB_MENU | menu_ENTRY_GENERATE_SUB_MENU_ACTION
+    cmp:&4
+    text:"Access details"
+    text_limit:*
+    click_object_name:""
+    sub_menu_object_name:"WAccess"
+    sub_menu_action:&0
+    click_action:&0
+    help:""
+    help_limit:*
+  }
+}
+
+window_object {
+  header_flags:
+  version:102
+  object_name:"WAccess"
+  window_flags:window_GENERATE_ABOUT_TO_BE_SHOWN | window_AUTO_OPEN | window_AUTO_CLOSE | window_GENERATE_DIALOGUE_COMPLETED
+  help_message:""
+  help_limit:*
+  sprite_name:""
+  pointer_limit:0
+  hotspot:0,0
+  menu_name:""
+  default_focus:toolbox_NULL_COMPONENT
+  show_action:&0
+  hide_action:&0
+  toolbar_ibl:""
+  toolbar_itl:""
+  toolbar_ebl:""
+  toolbar_etl:""
+  window.visible:1296,564,2032,900
+  window.xscroll:0
+  window.yscroll:0
+  window.next:wimp_TOP
+  window.flags:wimp_WINDOW_MOVEABLE | wimp_WINDOW_AUTO_REDRAW | wimp_WINDOW_CLOSE_ICON | wimp_WINDOW_TITLE_ICON | wimp_WINDOW_SIZE_ICON | wimp_WINDOW_NEW_FORMAT
+  window.title_fg:wimp_COLOUR_BLACK
+  window.title_bg:wimp_COLOUR_LIGHT_GREY
+  window.work_fg:wimp_COLOUR_BLACK
+  window.work_bg:wimp_COLOUR_VERY_LIGHT_GREY
+  window.scroll_outer:wimp_COLOUR_MID_LIGHT_GREY
+  window.scroll_inner:wimp_COLOUR_VERY_LIGHT_GREY
+  window.highlight_bg:wimp_COLOUR_CREAM
+  window.extra_flags:
+  window.extent:0,-1024,1280,0
+  window.title_flags:wimp_ICON_TEXT | wimp_ICON_HCENTRED | wimp_ICON_VCENTRED | wimp_ICON_INDIRECTED
+  window.work_flags:
+  window.sprite_area:&ffffffff
+  window.xmin:100
+  window.ymin:100
+  window.title_text:"Acess details"
+  window.title_text_limit:*
+  window.title_valid:""
+  optionbutton_object {
+    cmp:&c
+    bbox:232,-312,420,-268
+    help_message:""
+    help_limit:*
+    flags:optionbutton_ON
+    label:"Recursive"
+    label_limit:*
+    action:&0
+  }
+  actionbutton_object {
+    cmp:&d
+    bbox:468,-320,568,-256
+    help_message:""
+    help_limit:*
+    flags:actionbutton_IS_DEFAULT
+    text:"OK"
+    text_limit:*
+    click_show:""
+    action:&0
+  }
+  label_object {
+    cmp:&14
+    bbox:12,-56,200,-12
+    help_message:""
+    help_limit:*
+    flags:label_NO_BOX | label_RJUSTIFIED
+    label:"Locked"
+  }
+  label_object {
+    cmp:&15
+    bbox:12,-104,200,-60
+    help_message:""
+    help_limit:*
+    flags:label_NO_BOX | label_RJUSTIFIED
+    label:"Owner read"
+  }
+  label_object {
+    cmp:&16
+    bbox:12,-152,200,-108
+    help_message:""
+    help_limit:*
+    flags:label_NO_BOX | label_RJUSTIFIED
+    label:"Owner write"
+  }
+  label_object {
+    cmp:&17
+    bbox:8,-200,200,-156
+    help_message:""
+    help_limit:*
+    flags:label_NO_BOX | label_RJUSTIFIED
+    label:"Public read"
+  }
+  label_object {
+    cmp:&18
+    bbox:12,-248,200,-204
+    help_message:""
+    help_limit:*
+    flags:label_NO_BOX | label_RJUSTIFIED
+    label:"Public write"
+  }
+  radiobutton_object {
+    cmp:&80
+    bbox:224,-56,340,-12
+    help_message:""
+    help_limit:*
+    flags:
+    group:18
+    label:"Yes"
+    label_limit:*
+    action:&0
+  }
+  radiobutton_object {
+    cmp:&81
+    bbox:224,-104,340,-60
+    help_message:""
+    help_limit:*
+    flags:
+    group:19
+    label:"Yes"
+    label_limit:*
+    action:&0
+  }
+  radiobutton_object {
+    cmp:&82
+    bbox:224,-152,340,-108
+    help_message:""
+    help_limit:*
+    flags:
+    group:20
+    label:"Yes"
+    label_limit:*
+    action:&0
+  }
+  radiobutton_object {
+    cmp:&83
+    bbox:224,-200,340,-156
+    help_message:""
+    help_limit:*
+    flags:
+    group:21
+    label:"Yes"
+    label_limit:*
+    action:&0
+  }
+  radiobutton_object {
+    cmp:&84
+    bbox:224,-248,340,-204
+    help_message:""
+    help_limit:*
+    flags:
+    group:22
+    label:"Yes"
+    label_limit:*
+    action:&0
+  }
+  radiobutton_object {
+    cmp:&90
+    bbox:364,-56,464,-12
+    help_message:""
+    help_limit:*
+    flags:
+    group:18
+    label:"No"
+    label_limit:*
+    action:&0
+  }
+  radiobutton_object {
+    cmp:&91
+    bbox:364,-104,464,-60
+    help_message:""
+    help_limit:*
+    flags:
+    group:19
+    label:"No"
+    label_limit:*
+    action:&0
+  }
+  radiobutton_object {
+    cmp:&92
+    bbox:364,-152,464,-108
+    help_message:""
+    help_limit:*
+    flags:
+    group:20
+    label:"No"
+    label_limit:*
+    action:&0
+  }
+  radiobutton_object {
+    cmp:&93
+    bbox:364,-200,464,-156
+    help_message:""
+    help_limit:*
+    flags:
+    group:21
+    label:"No"
+    label_limit:*
+    action:&0
+  }
+  radiobutton_object {
+    cmp:&94
+    bbox:364,-248,464,-204
+    help_message:""
+    help_limit:*
+    flags:
+    group:22
+    label:"No"
+    label_limit:*
+    action:&0
+  }
+  radiobutton_object {
+    cmp:&100
+    bbox:500,-56,720,-12
+    help_message:""
+    help_limit:*
+    flags:radiobutton_ON
+    group:18
+    label:"No change"
+    label_limit:*
+    action:&0
+  }
+  radiobutton_object {
+    cmp:&101
+    bbox:500,-104,720,-60
+    help_message:""
+    help_limit:*
+    flags:radiobutton_ON
+    group:19
+    label:"No change"
+    label_limit:*
+    action:&0
+  }
+  radiobutton_object {
+    cmp:&102
+    bbox:500,-152,720,-108
+    help_message:""
+    help_limit:*
+    flags:radiobutton_ON
+    group:20
+    label:"No change"
+    label_limit:*
+    action:&0
+  }
+  radiobutton_object {
+    cmp:&103
+    bbox:500,-200,720,-156
+    help_message:""
+    help_limit:*
+    flags:radiobutton_ON
+    group:21
+    label:"No change"
+    label_limit:*
+    action:&0
+  }
+  radiobutton_object {
+    cmp:&104
+    bbox:500,-248,720,-204
+    help_message:""
+    help_limit:*
+    flags:radiobutton_ON
+    group:22
+    label:"No change"
+    label_limit:*
+    action:&0
+  }
+}
+
+fileinfo_object {
+  header_flags:
+  version:100
+  object_name:"FInfo"
+  fileinfo_flags:fileinfo_GENERATE_ABOUT_TO_BE_SHOWN | fileinfo_GENERATE_DIALOGUE_COMPLETED
+  title:""
+  title_limit:250
+  file_type:&0
+  file_name:""
+  alternative_window_name:""
+}

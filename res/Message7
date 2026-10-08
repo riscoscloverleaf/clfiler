@@ -1,0 +1,7 @@
+_TaskName:CLFiler
+Version:0.5
+DeleteFileConfirm:Sind Sie sicher das Sie die Datei löschen wollen %0?
+DeleteDirConfirm:Sind Sie sicher, daß Sie dieses Verzeichnis löschen wollen %0?
+OKCancel:OK,Abbruch
+CantCopyMoveToSame:Kann nicht innerhalb des gleichen Verzeichnisses Kopieren / Verschieben!
+Selection:Auswahl

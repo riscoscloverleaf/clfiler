@@ -1,0 +1,39 @@
+Iconsprites <Obey$Dir>.!Sprite
+Set CLFiler$Dir <Obey$Dir>
+Set CLFiler$ChoicesDir <Choices$Write>.CLFiler
+
+| Filetype -> Type name mappings
+|
+| These get set whether they were previously set or not
+Set File$Type_132 ICO
+Set File$Type_695 GIF
+Set File$Type_69C BMP
+
+Set File$Type_A59 IGES
+Set File$Type_A58 STL
+Set File$Type_A5A DWG
+Set File$Type_A5B POVRay
+Set File$Type_A5C 3DS
+Set File$Type_A5D PSPImage
+Set File$Type_A5E PSP
+Set File$Type_A5F HDR
+Set File$Type_A60 DCM
+Set File$Type_A61 QOI
+Set File$Type_A64 MP4
+Set File$Type_A66 WebP
+
+Set File$Type_AAD SVG
+Set File$Type_ADF PDF
+
+Set File$Type_A85 OTG
+Set File$Type_A85 ODG
+
+Set File$Type_B60 PNG
+
+Set File$Type_C85 JFIF
+Set File$Type_C85 EXIF
+Set File$Type_C85 JPEG
+Set File$Type_DEA DXF
+
+Set File$Type_F78 JNG
+Set File$Type_F98 PSD

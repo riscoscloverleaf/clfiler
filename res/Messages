@@ -1,0 +1,16 @@
+_TaskName:CLFiler
+Version:1.29
+DeleteFileConfirm:Are you sure to delete file %0?
+DeleteDirConfirm:Are you sure to delete directory %0?
+OKCancel:OK,Cancel
+CantCopyMoveToSame:Can't copy/move to the same directory
+Selection:Selection
+AddToFavorite:Add '%0' to favourites
+RemoveFromFavorite:Remove '%0' from favourites
+PathCopiedToClipboard:Path of '%0' copied to clipboard
+CopyPathToClipboard:Copy path of '%0' to clipboard
+ExportAsCSV:Export %0 as CSV
+MovedIfPasteCommand:%0 will be moved if you select Paste command
+MovedManyIfPasteCommand:%0 items will be moved if you select Paste command
+CopyIfPasteCommand:%0 will be copied if you select Paste command
+CopyManyIfPasteCommand:%0 items will be copied if you select Paste command

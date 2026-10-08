@@ -1,0 +1,54 @@
+Set CLFiler$Dir <Obey$Dir>
+Set CLFiler$ChoicesDir <Choices$Write>.CLFiler
+
+Set App$Name "!CLFiler"
+
+Iconsprites <Obey$Dir>.!Sprite
+
+RMEnsure UtilityModule 3.50 Error This application is only suitable for use with RISC OS 3.50 or later versions
+
+RMENSURE Toolbox      1.57  RMLOAD System:modules.toolbox.toolbox
+RMENSURE Toolbox      1.57  ERROR You need toolbox 1.57 or later to run <App$Name>
+RMENSURE Window       1.78  RMLOAD System:modules.toolbox.window
+RMENSURE Window       1.78  ERROR You need window 1.78 or later to run <App$Name>
+RMENSURE Menu         0.40  RMLOAD System:modules.toolbox.menu
+RMENSURE Menu         0.40  ERROR You need menu 0.40 or later to run <App$Name>
+RMENSURE Iconbar      1.23  RMLOAD System:modules.toolbox.iconbar
+RMENSURE Iconbar      1.23  ERROR You need iconbar 1.23 or later to run <App$Name>
+RMENSURE ColourDbox   0.21  RMLOAD System:modules.toolbox.ColourDbox
+RMENSURE ColourDbox   0.21  ERROR You need iconbar 0.21 or later to run <App$Name>
+RMENSURE ProgInfo     0.19  RMLOAD System:modules.toolbox.proginfo
+RMENSURE ProgInfo     0.19  ERROR You need proginfo 0.19 or later to run <App$Name>
+RMENSURE FileInfo     0.20  RMLOAD System:modules.toolbox.fileinfo
+RMENSURE FileInfo     0.20  ERROR You need FileInfo 0.20 or later to run <App$Name>
+RMENSURE SaveAs       0.20  RMLOAD System:modules.toolbox.saveas
+RMENSURE SaveAs       0.20  ERROR You need SaveAs 0.20 or later to run <App$Name>
+RMENSURE ToolAction   0.38  rmload System:Modules.Toolbox.ToolAction
+RMENSURE ToolAction   0.38  ERROR You need ToolAction 0.38 or later to run <App$Name>
+RMENSURE Treeview     0.22  rmload System:Modules.Toolbox.TreeView
+RMENSURE Treeview     0.22  ERROR You need TreeView 0.22 or later to run <App$Name>
+RMENSURE ColourPicker 0.56  rmload System:Modules.Picker
+RMENSURE ColourPicker 0.56  ERROR You need ColourPicker 0.56 or later to run <App$Name>
+RMENSURE DrawFile     1.59  rmload System:Modules.Drawfile
+RMENSURE DrawFile     1.59  ERROR You need DrawFile 1.59 or later to run <App$Name>
+RMENSURE TaskWindow   0.80  rmload System:Modules.taskwindow
+RMENSURE TaskWindow   0.80  ERROR You need TaskWindow 0.80 or later to run <App$Name>
+RMENSURE DragASprite  0.21  RMLOAD System:Modules.DragASprit
+RMENSURE DragASprite  0.21  ERROR You need DragASprite 0.21 or later to run <App$Name>
+RMEnsure Tinct        0.14  RMLOAD System:Modules.Tinct
+RMEnsure Tinct        0.14  ERROR You need Tinct 0.14 or later to run <App$Name> Please use the RISC OS Configure app to update the computer's !System directory from the <App$Name> archive.
+
+CDir <CLFiler$ChoicesDir>
+IfThere <CLFiler$ChoicesDir>.log-prev Then Delete <CLFiler$ChoicesDir>.log-prev
+IfThere <CLFiler$ChoicesDir>.log Then Rename <CLFiler$ChoicesDir>.log <CLFiler$ChoicesDir>.log-prev
+
+wimpslot -min 10000K -max 128000K
+| add option -dir <dir> to initially open specified directory
+| add option -open to open the window at startup
+| add option -toolbars to open new windows with some toolbars or three view switched off, 3 - all on, 2 - treeview off, 1 - treeview & status bar off, 0 - all off
+| add option -no-search-drives to turn off completely the drives (filesystems) detection. In this case you should put all your FS in the "<Choices$Write>.CLFiler.predefined-roots" file. Every FS on the new line, empty lines ignored.
+| add option -debug to turn on the debug logging. In case of problems please add -debug and send the logs to us
+| Example: <CLFiler$Dir>.!RunImage -debug -open -dir HostFS::HostFS.$.1 1><CLFiler$ChoicesDir>.std-log 2><CLFiler$ChoicesDir>.error-log
+| <CLFiler$Dir>.!RunImage -debug 1><CLFiler$ChoicesDir>.std-log 2><CLFiler$ChoicesDir>.error-log
+<CLFiler$Dir>.!RunImage -debug
+
